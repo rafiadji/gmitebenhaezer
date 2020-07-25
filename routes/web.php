@@ -30,6 +30,26 @@ Route::group(['prefix' => 'jabatan', 'as' => 'jabatan.'], function () {
     Route::get('/{jabatan}/edit', ['as' => 'edit', 'uses' => 'JabatanController@edit']);
 });
 
+Route::group(['prefix' => 'kategori', 'as' => 'kategori.'], function () {
+    Route::get('', ['as' => 'index', 'uses' => 'KatIbadahController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'KatIbadahController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'KatIbadahController@create']);
+    Route::get('/{kategori}', ['as' => 'show', 'uses' => 'KatIbadahController@show']);
+    Route::put('/{kategori}', ['as' => 'update', 'uses' => 'KatIbadahController@update']);
+    Route::delete('/{kategori}', ['as' => 'destroy', 'uses' => 'KatIbadahController@destroy']);
+    Route::get('/{kategori}/edit', ['as' => 'edit', 'uses' => 'KatIbadahController@edit']);
+});
+
+Route::group(['prefix' => 'setKeuangan', 'as' => 'setKeuangan.'], function () {
+    Route::get('', ['as' => 'index', 'uses' => 'SetKeuanganController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'SetKeuanganController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'SetKeuanganController@create']);
+    Route::get('/{setKeuangan}', ['as' => 'show', 'uses' => 'SetKeuanganController@show']);
+    Route::put('/{setKeuangan}', ['as' => 'update', 'uses' => 'SetKeuanganController@update']);
+    Route::delete('/{setKeuangan}', ['as' => 'destroy', 'uses' => 'SetKeuanganController@destroy']);
+    Route::get('/{setKeuangan}/edit', ['as' => 'edit', 'uses' => 'SetKeuanganController@edit']);
+});
+
 Route::group(['prefix'=>'jemaat','as'=>'jemaat.'], function(){
     Route::get('', ['as' => 'index', 'uses' => 'JemaatController@index']);
     Route::post('', ['as' => 'store', 'uses' => 'JemaatController@store']);

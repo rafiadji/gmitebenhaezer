@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pengumuman;
-use App\User;
+use App\KatIbadah;
 use Illuminate\Http\Request;
 
-class PengumumanController extends Controller
+class KatIbadahController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +16,7 @@ class PengumumanController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +24,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::all();
-        return view('pengumuman.list', compact('pengumumans'));
+        $kategoris = KatIbadah::all();
+        return view('kategori.list', compact('kategoris'));
     }
 
     /**
@@ -36,7 +35,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('pengumuman.create');
+        return view('kategori.create');
     }
 
     /**
@@ -48,23 +47,22 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+            'kategori' => 'required',
         ]);
 
-        Pengumuman::create($request->except(['files']));
+        KatIbadah::create($request->all());
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman baru berhasil ditambahkan.');
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori Ibadah baru berhasil ditambahkan.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\KatIbadah  $katIbadah
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengumuman $pengumuman)
+    public function show(KatIbadah $katIbadah)
     {
         //
     }
@@ -72,45 +70,44 @@ class PengumumanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\KatIbadah  $katIbadah
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengumuman $pengumuman)
+    public function edit(KatIbadah $kategori)
     {
-        return view('pengumuman.edit', compact('pengumuman'));
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\KatIbadah  $katIbadah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengumuman $pengumuman)
+    public function update(Request $request, KatIbadah $kategori)
     {
         $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+            'kategori' => 'required',
         ]);
 
-        $pengumuman->update($request->except(['files']));
+        $kategori->update($request->all());
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman berhasil diubah.');
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori Ibadah berhasil diubah.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\KatIbadah  $katIbadah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengumuman $pengumuman)
+    public function destroy(KatIbadah $kategori)
     {
-        $pengumuman->delete();
+        $kategori->delete();
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman berhasil dihapus.');
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori Ibadah berhasil dihapus.');
     }
 }

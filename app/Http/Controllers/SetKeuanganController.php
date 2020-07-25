@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pengumuman;
-use App\User;
+use App\setKeuangan;
 use Illuminate\Http\Request;
 
-class PengumumanController extends Controller
+class setKeuanganController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +16,7 @@ class PengumumanController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +24,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::all();
-        return view('pengumuman.list', compact('pengumumans'));
+        $setKeuangans = setKeuangan::all();
+        return view('setKeuangan.list', compact('setKeuangans'));
     }
 
     /**
@@ -36,7 +35,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('pengumuman.create');
+        return view('setKeuangan.create');
     }
 
     /**
@@ -48,23 +47,23 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+            'keterangan' => 'required',
+            'jenis_keuangan' => 'required',
         ]);
 
-        Pengumuman::create($request->except(['files']));
+        setKeuangan::create($request->all());
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman baru berhasil ditambahkan.');
+        return redirect()->route('setKeuangan.index')
+                        ->with('success','Setting Keuangan baru berhasil ditambahkan.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengumuman $pengumuman)
+    public function show(setKeuangan $setKeuangan)
     {
         //
     }
@@ -72,45 +71,45 @@ class PengumumanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengumuman $pengumuman)
+    public function edit(setKeuangan $setKeuangan)
     {
-        return view('pengumuman.edit', compact('pengumuman'));
+        return view('setKeuangan.edit', compact('setKeuangan'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengumuman $pengumuman)
+    public function update(Request $request, setKeuangan $setKeuangan)
     {
         $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
+            'keterangan' => 'required',
+            'jenis_keuangan' => 'required',
         ]);
 
-        $pengumuman->update($request->except(['files']));
+        $setKeuangan->update($request->all());
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman berhasil diubah.');
+        return redirect()->route('setKeuangan.index')
+                        ->with('success','Setting Keuangan berhasil diubah.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pengumuman  $pengumuman
+     * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengumuman $pengumuman)
+    public function destroy(setKeuangan $setKeuangan)
     {
-        $pengumuman->delete();
+        $setKeuangan->delete();
 
-        return redirect()->route('pengumuman.index')
-                        ->with('success','Pengumuman berhasil dihapus.');
+        return redirect()->route('setKeuangan.index')
+                        ->with('success','Setting Keuangan berhasil dihapus.');
     }
 }

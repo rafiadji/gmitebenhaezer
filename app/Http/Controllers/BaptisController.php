@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class BaptisController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -70,7 +80,7 @@ class BaptisController extends Controller
     public function edit(Baptis $baptis)
     {
         $jemaats = Jemaat::all();
-        return view('baptis.create', compact('baptis'), ['jemaats' => $jemaats]);
+        return view('baptis.edit', compact('baptis'), ['jemaats' => $jemaats]);
     }
 
     /**
