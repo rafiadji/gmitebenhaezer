@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\setKeuangan;
+use App\SetKeuangan;
 use Illuminate\Http\Request;
 
-class setKeuanganController extends Controller
+class SetKeuanganController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,7 +24,7 @@ class setKeuanganController extends Controller
      */
     public function index()
     {
-        $setKeuangans = setKeuangan::all();
+        $setKeuangans = SetKeuangan::all();
         return view('setKeuangan.list', compact('setKeuangans'));
     }
 
@@ -63,7 +63,7 @@ class setKeuanganController extends Controller
      * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function show(setKeuangan $setKeuangan)
+    public function show(SetKeuangan $setKeuangan)
     {
         //
     }
@@ -74,7 +74,7 @@ class setKeuanganController extends Controller
      * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function edit(setKeuangan $setKeuangan)
+    public function edit(SetKeuangan $setKeuangan)
     {
         return view('setKeuangan.edit', compact('setKeuangan'));
     }
@@ -86,7 +86,7 @@ class setKeuanganController extends Controller
      * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, setKeuangan $setKeuangan)
+    public function update(Request $request, SetKeuangan $setKeuangan)
     {
         $request->validate([
             'keterangan' => 'required',
@@ -105,7 +105,7 @@ class setKeuanganController extends Controller
      * @param  \App\setKeuangan  $setKeuangan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(setKeuangan $setKeuangan)
+    public function destroy(SetKeuangan $setKeuangan)
     {
         $setKeuangan->delete();
 
