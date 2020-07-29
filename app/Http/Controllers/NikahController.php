@@ -25,7 +25,7 @@ class NikahController extends Controller
      */
     public function index()
     {
-        $nikahs = Nikah::all();
+        $nikahs = Nikah::orderBy('id', 'desc')->get();
         return view('nikah.list', compact('nikahs'));
     }
 

@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 </head>
@@ -95,33 +98,35 @@
                                 <h3 class="card-title">Pengumuman</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
-                                        <tbody>
+                            <div class="card-body table-responsive p-0" style="height: 322px;">
+                                <table class="table table-striped table-striped">
+                                    <tbody>
+                                        @foreach ($pengumumans as $pengumuman)
                                         <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
+                                            <td style="width: 20%"><a href="#" class="" data-toggle="modal" data-target="#detailPengumuman{{ $pengumuman->id }}">{{ $pengumuman->judul }}</a></td>
+                                            <td>{{ substr(strip_tags($pengumuman->isi), 0, 100)."...." }}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <div class="modal fade" id="detailPengumuman{{ $pengumuman->id }}">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content bg-default">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">{{ $pengumuman->judul }}</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>{!! $pengumuman->isi !!}</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>                            
                         </div>
                     </div>
@@ -131,25 +136,61 @@
                                 <h3 class="card-title">Info Ibadah Rumah Tangga</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
-                                        <tbody>
+                            <div class="card-body table-responsive p-0" style="height: 322px;">
+                                <table class="table table-striped table-striped">
+                                    <tbody>
+                                        @foreach ($ibadahs as $ibadah)
                                         <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
+                                            <td style="width: 20%">{{ $ibadah->tgl_ibadah }}</td>
+                                            <td style="width: 20%">{{ $ibadah->waktu_ibadah }}</td>
+                                            <td><a href="#" class="" data-toggle="modal" data-target="#detailIbadah{{ $ibadah->id }}">info Ibadah <br>{{ $ibadah->kategori->kategori }}</a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <div class="modal fade" id="detailIbadah{{ $ibadah->id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-default">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Info Ibadah {{ $ibadah->kategori->kategori }}</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            <div class="form-group row">
+                                                                <label for="tgl_ibadah" class="col-sm-4 col-form-label">Tanggal Ibadah</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="tgl_ibadah" name="tgl_ibadah" value="{{ $ibadah->tgl_ibadah }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="waktu_ibadah" class="col-sm-4 col-form-label">Waktu Ibadah</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="waktu_ibadah" name="waktu_ibadah" value="{{ $ibadah->waktu_ibadah }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="tempat_ibadah" class="col-sm-4 col-form-label">Tempat Ibadah</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="tempat_ibadah" name="tempat_ibadah" value="{{ $ibadah->tempat_ibadah }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="pelayan" class="col-sm-4 col-form-label">Pelayan</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="pelayan" name="pelayan" value="{{ $ibadah->pelayan }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>                            
                         </div>
                     </div>
@@ -159,18 +200,73 @@
                                 <h3 class="card-title">Jadwal Pembaptisan</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
-                                        <tbody>
+                            <div class="card-body table-responsive p-0" style="height: 322px;">
+                                <table class="table table-striped table-striped">
+                                    <tbody>
+                                        @foreach ($baptiss as $baptis)
                                         <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
+                                            <td style="width: 20%">{{ $baptis->tgl_baptis }}</td>
+                                            <td style="width: 20%"><a href="#" class="" data-toggle="modal" data-target="#detailBaptis{{ $baptis->id }}">Calon Pembaptisan : {{ $baptis->calon->name }}<br>Pendeta : {{ $baptis->pendeta->name }}</a></td>
                                         </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                            
+                                        <div class="modal fade" id="detailBaptis{{ $baptis->id }}">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content bg-default">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Calon Pembaptisan : {{ $baptis->calon->name }}</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            <div class="form-group row">
+                                                                <label for="tgl_baptis" class="col-sm-4 col-form-label">Tanggal Baptis</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="tgl_baptis" name="tgl_baptis" value="{{ $ibadah->tgl_baptis }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="ayah" class="col-sm-4 col-form-label">Nama Ayah</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="ayah" name="ayah" value="{{ $ibadah->ayah->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="ibu" class="col-sm-4 col-form-label">Nama Ibu</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="ibu" name="ibu" value="{{ $ibadah->ibu->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="pendeta" class="col-sm-4 col-form-label">Nama Pendeta</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="pendeta" name="pendeta" value="{{ $ibadah->pendeta->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_1" class="col-sm-4 col-form-label">Saksi 1</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_1" name="name_saksi_1" value="{{ $ibadah->name_saksi_1 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_2" class="col-sm-4 col-form-label">Saksi 2</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_2" name="name_saksi_2" value="{{ $ibadah->name_saksi_2 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>                          
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -179,18 +275,18 @@
                                 <h3 class="card-title">Jadwal Sidi</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
-                                        <tbody>
+                            <div class="card-body table-responsive p-0" style="height: 322px;">
+                                <table class="table table-striped table-striped">
+                                    <tbody>
+                                        @foreach ($sidis as $sidi)
                                         <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
+                                            <td style="width: 20%">{{ $sidi->tgl_sidi }}</td>
+                                            <td style="width: 20%">Peserta Sidi : {{ $sidi->jemaat->name }}<br>Status : {{ $sidi->status_sidi }}</td>
                                         </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                            
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>                           
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -199,18 +295,87 @@
                                 <h3 class="card-title">Jadwal Pernikahan</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body p-0">
-                                <div class="table-responsive mailbox-messages">
-                                    <table class="table table-hover table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                            
+                            <div class="card-body table-responsive p-0" style="height: 322px;">
+                                <table class="table table-striped table-striped">
+                                    <tbody>
+                                        @foreach ($nikahs as $nikah)
+                                            <tr>
+                                                <td style="width: 20%">{{ $nikah->tgl_nikah }}</td>
+                                                <td style="width: 20%"><a href="#" class="" data-toggle="modal" data-target="#detailNikah{{ $nikah->id }}">Calon Suami : {{ $nikah->pria->name }} Calon Istri : {{ $nikah->wanita->name }}<br>Pendeta : {{ $nikah->pendeta->name }}</a></td>
+                                            </tr>
+                                        <div class="modal fade" id="detailNikah{{ $nikah->id }}">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content bg-default">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Pernikahan {{ $nikah->pria->name }} dengan {{ $nikah->wanita->name }} </h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            <div class="form-group row">
+                                                                <label for="tgl_nikah" class="col-sm-4 col-form-label">Tanggal Pernikahan</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="tgl_nikah" name="tgl_nikah" value="{{ $ibadah->tgl_nikah }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <h5>Data Mempelia Pria</h5>
+                                                            <div class="form-group row">
+                                                                <label for="pria" class="col-sm-4 col-form-label">Calon Suami</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="pria" name="pria" value="{{ $ibadah->pria->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_p_1" class="col-sm-4 col-form-label">Saksi 1</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_p_1" name="name_saksi_p_1" value="{{ $ibadah->name_saksi_p_1 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_p_2" class="col-sm-4 col-form-label">Saksi 2</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_p_2" name="name_saksi_p_2" value="{{ $ibadah->name_saksi_p_2 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <h5>Data Mempelia Wanita</h5>
+                                                            <div class="form-group row">
+                                                                <label for="wanita" class="col-sm-4 col-form-label">Calon Istri</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="wanita" name="wanita" value="{{ $ibadah->wanita->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_w_1" class="col-sm-4 col-form-label">Saksi 1</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_w_1" name="name_saksi_w_1" value="{{ $ibadah->name_saksi_w_1 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="name_saksi_w_2" class="col-sm-4 col-form-label">Saksi 2</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="name_saksi_w_2" name="name_saksi_w_2" value="{{ $ibadah->name_saksi_w_2 }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="pendeta" class="col-sm-4 col-form-label">Nama Pendeta</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control-plaintext" id="pendeta" name="pendeta" value="{{ $ibadah->pendeta->name }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,5 +404,20 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script>
+    $(function(){
+        $(".datatabel").DataTable({
+            "ordering": false,
+            "info": false,
+            "lengthChange": false,
+            "lengthMenu": [[5], [5]]
+        });
+    });
+</script>
 </body>
 </html>

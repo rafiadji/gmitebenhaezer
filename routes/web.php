@@ -99,3 +99,24 @@ Route::group(['prefix'=>'pengumuman','as'=>'pengumuman.'], function(){
     Route::delete('/{pengumuman}', ['as' => 'destroy', 'uses' => 'PengumumanController@destroy']);
     Route::get('/{pengumuman}/edit', ['as' => 'edit', 'uses' => 'PengumumanController@edit']);
 });
+
+Route::group(['prefix'=>'ibadah','as'=>'ibadah.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'IbadahController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'IbadahController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'IbadahController@create']);
+    Route::get('/{ibadah}', ['as' => 'show', 'uses' => 'IbadahController@show']);
+    Route::put('/{ibadah}', ['as' => 'update', 'uses' => 'IbadahController@update']);
+    Route::delete('/{ibadah}', ['as' => 'destroy', 'uses' => 'IbadahController@destroy']);
+    Route::get('/{ibadah}/edit', ['as' => 'edit', 'uses' => 'IbadahController@edit']);
+});
+
+Route::group(['prefix'=>'keuangan','as'=>'keuangan.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'KeuanganController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'KeuanganController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'KeuanganController@create']);
+    Route::get('/{keuangan}', ['as' => 'show', 'uses' => 'KeuanganController@show']);
+    Route::put('/{keuangan}', ['as' => 'update', 'uses' => 'KeuanganController@update']);
+    Route::delete('/{keuangan}', ['as' => 'destroy', 'uses' => 'KeuanganController@destroy']);
+    Route::get('/{keuangan}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit']);
+    Route::post('/getData', ['as' => 'getData', 'uses' => 'KeuanganController@getDaftarKeuangan']);
+});

@@ -25,7 +25,7 @@ class SidiController extends Controller
      */
     public function index()
     {
-        $sidis = Sidi::all();
+        $sidis = Sidi::orderBy('id', 'desc')->get();
         return view('sidi.list', compact('sidis'));
     }
 

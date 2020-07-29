@@ -25,7 +25,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::all();
+        $pengumumans = Pengumuman::orderBy('id', 'desc')->get();
         return view('pengumuman.list', compact('pengumumans'));
     }
 

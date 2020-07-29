@@ -13,7 +13,7 @@
 @endsection
 
 @section('title_head')
-    Tambah Setting Keuangan
+    Ubah Setting Keuangan
 @endsection
 
 @section('bread')
@@ -30,11 +30,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Setting Keuangan</h3>
+                    <h3 class="card-title">Ubah Setting Keuangan</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="pemasukan" class="col-sm-2 col-form-label">Jenis Keuangan</label>
+                        <label for="pemasukan" class="col-sm-3 col-form-label">Jenis Keuangan</label>
                         <div class="col-sm-9">
                             <div class="icheck-primary d-inline">
                                 <input type="radio" name="jenis_keuangan" value="pemasukan" id="pemasukan" @if ($setKeuangan->jenis_keuangan == 'pemasukan') checked @endif>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                        <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" value="{{ $setKeuangan->keterangan }}">
                         </div>
@@ -65,10 +65,23 @@
 
 @section('javascript')
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<!-- InputMask -->
+<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- date-range-picker -->
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<script>
+    $(function(){
+        $('.datepick').datetimepicker({
+            format: 'L'
+        });
+        $('[data-mask]').inputmask();
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        });
+    });
+</script>
 @endsection

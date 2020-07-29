@@ -9,4 +9,9 @@ class SetKeuangan extends Model
     protected $table = 'gr_set_keuangan';
 
     protected $guarded = [];
+
+    public function keuangan()
+    {
+        return $this->hasMany(Keuangan::class);
+    }
 }

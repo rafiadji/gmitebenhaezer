@@ -33,13 +33,13 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                        <label for="jabatan" class="col-sm-3 col-form-label">Jabatan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Nama Jabatan">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Menu Jemaat</label>
+                        <label class="col-sm-3 col-form-label">Menu Jemaat</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="read jemaat" id="readjemaat" checked>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Menu Sidi</label>
+                        <label class="col-sm-3 col-form-label">Menu Sidi</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="read sidi" id="readsidi" checked>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Menu Pernikahan</label>
+                        <label class="col-sm-3 col-form-label">Menu Pernikahan</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="read nikah" id="readnikah" checked>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Menu Pembaptisan</label>
+                        <label class="col-sm-3 col-form-label">Menu Pembaptisan</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="read baptis" id="readbaptis" checked>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Menu Pengumuman</label>
+                        <label class="col-sm-3 col-form-label">Menu Pengumuman</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="read pengumuman" id="readpengumuman" checked>
@@ -156,10 +156,23 @@
 
 @section('javascript')
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<!-- InputMask -->
+<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- date-range-picker -->
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<script>
+    $(function(){
+        $('.datepick').datetimepicker({
+            format: 'L'
+        });
+        $('[data-mask]').inputmask();
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        });
+    });
+</script>
 @endsection

@@ -25,7 +25,7 @@ class BaptisController extends Controller
      */
     public function index()
     {
-        $baptiss = Baptis::all();
+        $baptiss = Baptis::orderBy('id', 'desc')->get();
         return view('baptis.list', compact('baptiss'));
     }
 

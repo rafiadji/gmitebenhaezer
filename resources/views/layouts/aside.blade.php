@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ url('/') }}" class="brand-link">
       <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">SI GEREJA</span>
@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('pengumuman.index') }}" class="nav-link @if(request()->segment(1) == 'pengumuman') active @endif">
+                    <a href="{{ route('ibadah.index') }}" class="nav-link @if(request()->segment(1) == 'ibadah') active @endif">
                         <i class="nav-icon fas fa-bible"></i>
                         <p>Jadwal Ibadah</p>
                     </a>
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-header">TRANSAKSI</li>
                 <li class="nav-item">
-                    <a href="{{ route('pengumuman.index') }}" class="nav-link @if(request()->segment(1) == 'pengumuman') active @endif">
+                    <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
                         <i class="nav-icon fas fa-hand-holding-usd"></i>
                         <p>Keuangan Gereja</p>
                     </a>
@@ -74,7 +74,7 @@
                 <li class="nav-item">
                     <a href="{{ route('kategori.index') }}" class="nav-link @if(request()->segment(1) == 'kategori') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
-                        <p>Kategori Ibadah</p>
+                        <p>Rayon / Kategori Ibadah</p>
                     </a>
                 </li>
                 <li class="nav-item">

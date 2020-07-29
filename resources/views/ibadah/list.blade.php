@@ -7,12 +7,12 @@
 @endsection
 
 @section('title_head')
-    Rayon / Kategori Ibadah
+    Jadwal Ibadah
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Rayon / Kategori Ibadah</li>
+    <li class="breadcrumb-item active">Jadwal Ibadah</li>
 @endsection
 
 @section('content')
@@ -20,31 +20,37 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data Rayon / Kategori Ibadah</h3>
+                <h3 class="card-title">Data Jadwal Ibadah</h3>
                 <div class="card-tools">
-                    <a href="{{ route('kategori.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Rayon / Kategori Ibadah</a>
+                    <a href="{{ route('ibadah.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Jadwal Ibadah</a>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped datatabel">
                 <thead>
                 <tr>
-                    <th>Rayon / Kategori Ibadah</th>
+                    <th style="width: 20%">Rayon / Kategori Ibadah</th>
+                    <th style="width: 20%">Tanggal & Waktu Ibadah</th>
+                    <th>Tempat Ibadah</th>
+                    <th>Pelayan</th>
                     <th style="width: 20%">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($kategoris as $kategori)
+                    @foreach ($ibadahs as $ibadah)
                     <tr>
-                        <td>{{ $kategori->kategori }}</td>
+                        <td>{{ $ibadah->kategori->kategori }}</td>
+                        <td>{{ $ibadah->tgl_ibadah }} & {{ $ibadah->waktu_ibadah }}</td>
+                        <td>{{ $ibadah->tempat_ibadah }}</td>
+                        <td>{{ $ibadah->pelayan }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $kategori->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                <a href="{{ route('ibadah.edit',$ibadah->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $ibadah->id }}"><i class="fas fa-trash"></i> Hapus</button>
                             </div>
                         </td>
                     </tr>
-                    <div class="modal fade" id="confrimModal{{ $kategori->id }}">
+                    <div class="modal fade" id="confrimModal{{ $ibadah->id }}">
                         <div class="modal-dialog">
                             <div class="modal-content bg-danger">
                                 <div class="modal-header">
@@ -54,11 +60,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Apakah Anda Yakin Ingin Menghapus Kategori Ibadah <strong>{{ $kategori->kategori }}</strong></p>
+                                    <p>Apakah Anda Yakin Ingin Menghapus Jadwal Ibadah di <strong>{{ $ibadah->tempat_ibadah }}</strong> pada tanggal <strong>{{ $ibadah->tgl_ibadah }}</strong></p>
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST">
+                                    <form action="{{ route('ibadah.destroy',$ibadah->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-light">Ya, Saya Yakin</button>

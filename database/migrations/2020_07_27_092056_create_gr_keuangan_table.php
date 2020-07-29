@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrPengumumanTable extends Migration
+class CreateGrKeuanganTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateGrPengumumanTable extends Migration
      */
     public function up()
     {
-        Schema::create('gr_pengumuman', function (Blueprint $table) {
+        Schema::create('gr_keuangan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_user')->unsigned()->nullable();
-            $table->string('judul', 50);
-            $table->text('isi');
+            $table->bigInteger('id_set')->unsigned()->nullable();
+            $table->date('tgl_keuangan')->nullable();
+            $table->string('keterangan_lain', 50)->nullable();
+            $table->integer('nominal');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->nullable();
+            $table->foreign('id_set')->references('id')->on('gr_set_keuangan')->onDelete('cascade')->nullable();
         });
     }
 
@@ -30,6 +33,6 @@ class CreateGrPengumumanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gr_pengumuman');
+        Schema::dropIfExists('gr_keuangan');
     }
 }
