@@ -42,7 +42,7 @@
                         <label class="col-sm-3 col-form-label">Menu Jemaat</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" name="permission[]" value="read jemaat" id="readjemaat" checked>
+                                <input type="checkbox" name="permission[]" value="read jemaat" id="readjemaat">
                                 <label for="readjemaat">Read</label>
                             </div>&nbsp;
                             <div class="icheck-primary d-inline">
@@ -63,7 +63,7 @@
                         <label class="col-sm-3 col-form-label">Menu Sidi</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" name="permission[]" value="read sidi" id="readsidi" checked>
+                                <input type="checkbox" name="permission[]" value="read sidi" id="readsidi">
                                 <label for="readsidi">Read</label>
                             </div>&nbsp;
                             <div class="icheck-primary d-inline">
@@ -84,7 +84,7 @@
                         <label class="col-sm-3 col-form-label">Menu Pernikahan</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" name="permission[]" value="read nikah" id="readnikah" checked>
+                                <input type="checkbox" name="permission[]" value="read nikah" id="readnikah">
                                 <label for="readnikah">Read</label>
                             </div>&nbsp;
                             <div class="icheck-primary d-inline">
@@ -105,7 +105,7 @@
                         <label class="col-sm-3 col-form-label">Menu Pembaptisan</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" name="permission[]" value="read baptis" id="readbaptis" checked>
+                                <input type="checkbox" name="permission[]" value="read baptis" id="readbaptis">
                                 <label for="readbaptis">Read</label>
                             </div>&nbsp;
                             <div class="icheck-primary d-inline">
@@ -126,7 +126,7 @@
                         <label class="col-sm-3 col-form-label">Menu Pengumuman</label>
                         <div class="col-sm-5">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" name="permission[]" value="read pengumuman" id="readpengumuman" checked>
+                                <input type="checkbox" name="permission[]" value="read pengumuman" id="readpengumuman">
                                 <label for="readpengumuman">Read</label>
                             </div>&nbsp;
                             <div class="icheck-primary d-inline">
@@ -140,6 +140,90 @@
                             <div class="icheck-primary d-inline">
                                 <input type="checkbox" name="permission[]" value="delete pengumuman" id="deletepengumuman">
                                 <label for="deletepengumuman">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Ibadah</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="read ibadah" id="readibadah">
+                                <label for="readibadah">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="create ibadah" id="createibadah">
+                                <label for="createibadah">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="update ibadah" id="updateibadah">
+                                <label for="updateibadah">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="delete ibadah" id="deleteibadah">
+                                <label for="deleteibadah">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Keuangan</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="read keuangan" id="readkeuangan">
+                                <label for="readkeuangan">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="create keuangan" id="createkeuangan">
+                                <label for="createkeuangan">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="update keuangan" id="updatekeuangan">
+                                <label for="updatekeuangan">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="delete keuangan" id="deletekeuangan">
+                                <label for="deletekeuangan">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Kategori Ibadah</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="read katibadah" id="readkatibadah">
+                                <label for="readkatibadah">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="create katibadah" id="createkatibadah">
+                                <label for="createkatibadah">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="update katibadah" id="updatekatibadah">
+                                <label for="updatekatibadah">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="delete katibadah" id="deletekatibadah">
+                                <label for="deletekatibadah">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Setting Keuangan</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="read setkeuangan" id="readsetkeuangan">
+                                <label for="readsetkeuangan">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="create setkeuangan" id="createsetkeuangan">
+                                <label for="createsetkeuangan">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="update setkeuangan" id="updatesetkeuangan">
+                                <label for="updatesetkeuangan">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" value="delete setkeuangan" id="deletesetkeuangan">
+                                <label for="deletesetkeuangan">Delete</label>
                             </div>&nbsp;
                         </div>
                     </div>
