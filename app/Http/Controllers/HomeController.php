@@ -43,10 +43,9 @@ class HomeController extends Controller
             ->whereYear('tgl_keuangan', $year)
             ->groupBy('bulan')
             ->get();
-        var_dump($keuangans);die;
-        // foreach ($keuangans as $uang) {
-        //     $chart[($uang->bulan)-1] = (int)$uang->saldo;
-        // }
+        foreach ($keuangans as $uang) {
+            $chart[($uang->bulan)-1] = (int)$uang->saldo;
+        }
         return view('home', [
             'jum_jemaat' => $jum_jemaat,
             'jum_baptis' => $jum_baptis,
