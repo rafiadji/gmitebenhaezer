@@ -39,10 +39,11 @@ class HomeController extends Controller
         $jum_nikah = Nikah::whereDate('tgl_nikah', '>', $date)->count();
         $jum_ibadah = Ibadah::whereDate('tgl_ibadah', '>', $date)->count();
         $pengumumans = Pengumuman::orderBy('id', 'desc')->limit(10)->get();
-        // $keuangans = Keuangan::select(Keuangan::raw('MONTH(tgl_keuangan) as bulan, SUM(nominal) as saldo'))
-        //     ->whereYear('tgl_keuangan', $year)
-        //     ->groupBy('bulan')
-        //     ->get();
+        $keuangans = Keuangan::select(Keuangan::raw('MONTH(tgl_keuangan) as bulan, SUM(nominal) as saldo'))
+            ->whereYear('tgl_keuangan', $year)
+            ->groupBy('bulan')
+            ->get();
+        var_dump($keuangans);die;
         // foreach ($keuangans as $uang) {
         //     $chart[($uang->bulan)-1] = (int)$uang->saldo;
         // }
