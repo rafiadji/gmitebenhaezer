@@ -55,11 +55,17 @@
                         <p>Pengumuman</p>
                     </a>
                 </li>
-                <li class="nav-header">TRANSAKSI</li>
+                <li class="nav-header">Keuangan Gereja</li>
                 <li class="nav-item">
                     <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
                         <i class="nav-icon fas fa-hand-holding-usd"></i>
-                        <p>Keuangan Gereja</p>
+                        <p>Pemasukan & Pengeluaran</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('lapkeuangan.index') }}" class="nav-link @if(request()->segment(1) == 'lapkeuangan') active @endif">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Laporan Keuangan</p>
                     </a>
                 </li>
                 <li class="nav-header">Setting</li>

@@ -120,3 +120,9 @@ Route::group(['prefix'=>'keuangan','as'=>'keuangan.'], function(){
     Route::get('/{keuangan}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit']);
     Route::post('/getData', ['as' => 'getData', 'uses' => 'KeuanganController@getDaftarKeuangan']);
 });
+
+Route::group(['prefix'=>'lapkeuangan','as'=>'lapkeuangan.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'LapKeuanganController@index']);
+    Route::post('/getTable', ['as' => 'getTable', 'uses' => 'LapKeuanganController@getTable']);
+    Route::post('/getSaldo', ['as' => 'getSaldo', 'uses' => 'LapKeuanganController@getSaldo']);
+});
