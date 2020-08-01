@@ -9,6 +9,7 @@ use App\Baptis;
 use App\Sidi;
 use App\Nikah;
 use App\Keuangan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -39,13 +40,13 @@ class HomeController extends Controller
         $jum_nikah = Nikah::whereDate('tgl_nikah', '>', $date)->count();
         $jum_ibadah = Ibadah::whereDate('tgl_ibadah', '>', $date)->count();
         $pengumumans = Pengumuman::orderBy('id', 'desc')->limit(10)->get();
-        // $keuangans = Keuangan::select(Keuangan::raw('MONTH(tgl_keuangan) as bulan, SUM(nominal) as saldo'))
-        //     ->whereYear('tgl_keuangan', $year)
-        //     ->groupBy('bulan')
-        //     ->get();
-        // foreach ($keuangans as $uang) {
-        //     $chart[($uang->bulan)-1] = (int)$uang->saldo;
-        // }
+        $keuangans = Keuangan::whereYear('tgl_keuangan', $year)
+            ->orderby('tgl_keuangan')
+            ->get();
+        foreach ($keuangans as $uang) {
+            $bulan = Carbon::parse($uang->tgl_keuangan)->month;
+            $chart[($bulan)-1] += (int)$uang->nominal;
+        }
         return view('home', [
             'jum_jemaat' => $jum_jemaat,
             'jum_baptis' => $jum_baptis,
