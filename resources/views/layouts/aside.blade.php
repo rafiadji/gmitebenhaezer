@@ -18,50 +18,64 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                @can('read jemaat')
                 <li class="nav-item">
                     <a href="{{ route('jemaat.index') }}" class="nav-link @if(request()->segment(1) == 'jemaat') active @endif">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Jemaat</p>
                     </a>
                 </li>
+                @endcan
                 <li class="nav-header">PENGUMUMAN & JADWAL</li>
+                @can('read baptis')
                 <li class="nav-item">
                     <a href="{{ route('baptis.index') }}" class="nav-link @if(request()->segment(1) == 'baptis') active @endif">
                         <i class="nav-icon fas fa-pray"></i>
                         <p> Jadwal Pembabtisan</p>
                     </a>
                 </li>
+                @endcan
+                @can('read sidi')
                 <li class="nav-item">
                     <a href="{{ route('sidi.index') }}" class="nav-link @if(request()->segment(1) == 'sidi') active @endif">
                         <i class="nav-icon fas fa-user-friends"></i>
                         <p>Jadwal Sidi</p>
                     </a>
                 </li>
+                @endcan
+                @can('read nikah')
                 <li class="nav-item">
                     <a href="{{ route('nikah.index') }}" class="nav-link @if(request()->segment(1) == 'nikah') active @endif">
                         <i class="nav-icon fas fa-people-carry"></i>
                         <p>Jadwal Pernikahan</p>
                     </a>
                 </li>
+                @endcan
+                @can('read ibadah')
                 <li class="nav-item">
                     <a href="{{ route('ibadah.index') }}" class="nav-link @if(request()->segment(1) == 'ibadah') active @endif">
                         <i class="nav-icon fas fa-bible"></i>
                         <p>Jadwal Ibadah</p>
                     </a>
                 </li>
+                @endcan
+                @can('read pengumuman')
                 <li class="nav-item">
                     <a href="{{ route('pengumuman.index') }}" class="nav-link @if(request()->segment(1) == 'pengumuman') active @endif">
                         <i class="nav-icon fas fa-bell"></i>
                         <p>Pengumuman</p>
                     </a>
                 </li>
+                @endcan
                 <li class="nav-header">Keuangan Gereja</li>
+                @can('read keuangan')
                 <li class="nav-item">
                     <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
                         <i class="nav-icon fas fa-hand-holding-usd"></i>
                         <p>Pemasukan & Pengeluaran</p>
                     </a>
                 </li>
+                @endcan
                 <li class="nav-item">
                     <a href="{{ route('lapkeuangan.index') }}" class="nav-link @if(request()->segment(1) == 'lapkeuangan') active @endif">
                         <i class="nav-icon fas fa-book"></i>
@@ -77,18 +91,22 @@
                     </a>
                 </li>
                 @endrole
+                @can('read katibadah')
                 <li class="nav-item">
                     <a href="{{ route('kategori.index') }}" class="nav-link @if(request()->segment(1) == 'kategori') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>Rayon / Kategori Ibadah</p>
                     </a>
                 </li>
+                @endcan
+                @can('read setkeuangan')
                 <li class="nav-item">
                     <a href="{{ route('setKeuangan.index') }}" class="nav-link @if(request()->segment(1) == 'setKeuangan') active @endif">
                         <i class="nav-icon fas fa-money-bill-alt"></i>
                         <p>Setting Keuangan</p>
                     </a>
                 </li>
+                @endcan
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

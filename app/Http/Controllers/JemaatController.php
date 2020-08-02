@@ -129,7 +129,7 @@ class JemaatController extends Controller
         $jemaat->update($request->except(['email']));
   
         return redirect()->route('jemaat.index')
-                        ->with('success','Jemaat updated successfully');
+                        ->with('success','Jemaat berhasil diubah.');
     }
 
     /**

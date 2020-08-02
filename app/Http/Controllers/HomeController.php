@@ -11,6 +11,8 @@ use App\Nikah;
 use App\Keuangan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -57,5 +59,46 @@ class HomeController extends Controller
             'datachart' => $chart,
             'year' => $year,
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editpassword()
+    {
+        return view('auth.changepassword');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatepassword(Request $request)
+    {
+        if (!(Hash::check($request->get('password_lama'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("err_pass_lama","Password lama anda tidak sesuai, silahkan coba kembali");
+        }
+        if(strcmp($request->get('password_lama'), $request->get('password_baru')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("err_pass_baru","Password baru tidak boleh sama dengan password lama")->withInput($request->except('password_baru'));
+        }
+        if(!(strcmp($request->get('password_baru'), $request->get('konfirm_password'))) == 0){
+            //New password and confirm password are not same
+            return redirect()->back()->with("err_pass_konfirm","Password yang dimasukkan harus sama dengan password baru")->withInput($request->except('konfirm_password'));
+        }
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('password_baru'));
+        $user->save();
+
+        Auth::logout();
+
+        return redirect()->route('home')
+                        ->with('success','Password berhasil diubah.');
     }
 }

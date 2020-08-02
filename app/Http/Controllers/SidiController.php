@@ -99,7 +99,7 @@ class SidiController extends Controller
         $sidi->update($request->all());
 
         return redirect()->route('sidi.index')
-                        ->with('success','Jadwal Sidi baru berhasil diubah.');
+                        ->with('success','Jadwal Sidi berhasil diubah.');
     }
 
     /**
@@ -113,6 +113,6 @@ class SidiController extends Controller
         $sidi->delete();
 
         return redirect()->route('sidi.index')
-                        ->with('success','Jadwal Sidi baru berhasil dihapus.');
+                        ->with('success','Jadwal Sidi berhasil dihapus.');
     }
 }

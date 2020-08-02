@@ -32,6 +32,7 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
+                        <a href="{{ route('changepassword.edit') }}" class="btn btn-default btn-flat">Change Password</a>
                         <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

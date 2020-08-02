@@ -101,7 +101,7 @@ class BaptisController extends Controller
         $baptis->update($request->all());
 
         return redirect()->route('baptis.index')
-                        ->with('success','Jadwal pembabtisan baru berhasil diubah.');
+                        ->with('success','Jadwal pembabtisan berhasil diubah.');
     }
 
     /**
@@ -115,6 +115,6 @@ class BaptisController extends Controller
         $baptis->delete();
 
         return redirect()->route('baptis.index')
-                        ->with('success','Jadwal pembabtisan baru berhasil dihapus.');
+                        ->with('success','Jadwal pembabtisan berhasil dihapus.');
     }
 }
