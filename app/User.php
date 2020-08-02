@@ -40,21 +40,21 @@ class User extends Authenticatable
 
     public function jemaat()
     {
-        return $this->hasOne(Jemaat::class);
+        return $this->hasOne(Jemaat::class, 'id_user');
     }
 
     public function pengumuman()
     {
-        return $this->hasMany(Pengumuman::class);
+        return $this->hasMany(Pengumuman::class, 'id_user');
     }
 
     public function ibadah()
     {
-        return $this->hasMany(Ibadah::class);
+        return $this->hasMany(Ibadah::class, 'id_user');
     }
 
     public function keuangan()
     {
-        return $this->hasMany(Keuangan::class);
+        return $this->hasMany(Keuangan::class, 'id_user');
     }
 }
