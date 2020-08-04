@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Jemaat</h3>
                 <div class="card-tools">
+                    @can('create jemaat')
                     <a href="{{ route('jemaat.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Jemaat</a>
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -45,8 +47,12 @@
                         <td>{{ $jemaat->no_tlp }}</td>
                         <td>
                             <div class="btn-group">
+                                @can('update jemaat')
                                 <a href="{{ route('jemaat.edit',$jemaat->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
+                                @endcan
+                                @can('delete jemaat')
                                 <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $jemaat->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @endcan
                             </div>
                         </td>
                     </tr>

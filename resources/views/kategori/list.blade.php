@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Rayon / Kategori Ibadah</h3>
                 <div class="card-tools">
-                    <a href="{{ route('kategori.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Rayon / Kategori Ibadah</a>
+                    @can('create katibadah')
+                    <a href="{{ route('kategori.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Rayon / Kategori Ibadah</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -39,8 +41,12 @@
                         <td>{{ $kategori->kategori }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $kategori->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update katibadah')
+                                <a href="{{ route('kategori.edit',$kategori->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete katibadah')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $kategori->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

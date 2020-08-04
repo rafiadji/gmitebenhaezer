@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Sistem Informasi Gereja</title>
+    <title>GMIT EBENHAEZER LARANTUKA</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -31,7 +31,7 @@
             <a href="{{ url('/') }}" class="navbar-brand">
                 <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">SI GEREJA</span>
+                <span class="brand-text font-weight-light">GMIT EBENHAEZER LARANTUKA</span>
             </a>
 
             <!-- Right navbar links -->

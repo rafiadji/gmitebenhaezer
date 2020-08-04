@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Jadwal Ibadah</h3>
                 <div class="card-tools">
-                    <a href="{{ route('ibadah.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Jadwal Ibadah</a>
+                    @can('create ibadah')
+                    <a href="{{ route('ibadah.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Jadwal Ibadah</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -45,8 +47,12 @@
                         <td>{{ $ibadah->pelayan }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('ibadah.edit',$ibadah->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $ibadah->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update ibadah')
+                                <a href="{{ route('ibadah.edit',$ibadah->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete ibadah')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $ibadah->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

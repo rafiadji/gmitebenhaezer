@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Pernikahan</h3>
                 <div class="card-tools">
-                    <a href="{{ route('nikah.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pernikahan</a>
+                    @can('create nikah')
+                    <a href="{{ route('nikah.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pernikahan</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -45,8 +47,12 @@
                         <td>{{ $nikah->pendeta->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('nikah.edit',$nikah->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $nikah->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update nikah')
+                                <a href="{{ route('nikah.edit',$nikah->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete nikah')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $nikah->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

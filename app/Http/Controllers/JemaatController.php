@@ -65,7 +65,7 @@ class JemaatController extends Controller
         $newUser = User::create([
             'name' => $request->input("name"),
             'email' => $request->input("email"),
-            'password'  => bcrypt('jemaat123')
+            'password'  => bcrypt('jemaatgereja')
         ]);
         $newUser->assignRole($roles);
         $id_user = $newUser->id;

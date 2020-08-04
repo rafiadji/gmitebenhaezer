@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Pengumuman</h3>
                 <div class="card-tools">
-                    <a href="{{ route('pengumuman.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pengumuman</a>
+                    @can('create pengumuman')
+                    <a href="{{ route('pengumuman.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pengumuman</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -41,8 +43,12 @@
                         <td>{{ $pengumuman->user->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('pengumuman.edit',$pengumuman->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $pengumuman->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update pengumuman')
+                                <a href="{{ route('pengumuman.edit',$pengumuman->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete pengumuman')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $pengumuman->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Sidi</h3>
                 <div class="card-tools">
-                    <a href="{{ route('sidi.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Sidi</a>
+                    @can('create sidi')
+                    <a href="{{ route('sidi.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Sidi</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -43,8 +45,12 @@
                         <td>{{ $sidi->status_sidi }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('sidi.edit',$sidi->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $sidi->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update sidi')
+                                <a href="{{ route('sidi.edit',$sidi->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete sidi')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $sidi->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

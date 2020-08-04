@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Pembaptisan</h3>
                 <div class="card-tools">
+                    @can('create baptis')
                     <a href="{{ route('baptis.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pembaptisan</a>
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -43,8 +45,12 @@
                         <td>{{ $baptis->pendeta->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('baptis.edit',$baptis->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $baptis->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                @can('update baptis')
+                                <a href="{{ route('baptis.edit',$baptis->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                    
+                                @endcan
+                                @can('delete baptis')
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $baptis->id }}"><i class="fas fa-trash"></i> Hapus</button>                                    
+                                @endcan
                             </div>
                         </td>
                     </tr>

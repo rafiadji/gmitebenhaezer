@@ -22,7 +22,9 @@
             <div class="card-header">
                 <h3 class="card-title">Data Setting Keuangan</h3>
                 <div class="card-tools">
-                    <a href="{{ route('setKeuangan.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Setting Keuangan</a>
+                    @can('create setkeuangan')
+                    <a href="{{ route('setKeuangan.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Setting Keuangan</a>                        
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -51,8 +53,12 @@
                                         <td>
                                             <div class="btn-group">
                                                 @if ($setKeuangan->keterangan != 'Pemasukan Lain')
-                                                    <a href="{{ route('setKeuangan.edit',$setKeuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                                    <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $setKeuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                                @can('update setkeuangan')
+                                                    <a href="{{ route('setKeuangan.edit',$setKeuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                                    
+                                                @endcan
+                                                @can('delete setkeuangan')
+                                                    <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $setKeuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>                                                    
+                                                @endcan
                                                 @endif
                                             </div>
                                         </td>
@@ -101,8 +107,12 @@
                                         <td>
                                             <div class="btn-group">
                                                 @if ($setKeuangan->keterangan != 'Pengeluaran Lain')
-                                                    <a href="{{ route('setKeuangan.edit',$setKeuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                                    <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $setKeuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>
+                                                @can('update setkeuangan')
+                                                    <a href="{{ route('setKeuangan.edit',$setKeuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                                    
+                                                @endcan
+                                                @can('delete setkeuangan')
+                                                    <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $setKeuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>                                                    
+                                                @endcan
                                                 @endif
                                             </div>
                                         </td>
