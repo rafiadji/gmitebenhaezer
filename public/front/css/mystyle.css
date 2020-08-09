@@ -1,0 +1,133 @@
+#header .logo img {
+    max-height: 70px;
+}
+#pgib{
+    background: rgb(255, 255, 255);
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    position: relative;
+}
+
+#pgib::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgb(241, 239, 239);
+    z-index: 9;
+}
+
+#pgib .container {
+    position: relative;
+    z-index: 10;
+}
+
+#pengumuman {
+    padding: 60px 40px 40px 0;
+}
+
+#pengumuman .table-responsive{
+    background: #fff;
+    background-size: cover;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#pengumuman .img-pengumuman{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+#ibadah {
+    padding: 60px 0 40px 40px;
+}
+
+#ibadah .table-responsive{
+    background: #fff;
+    background-size: cover;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#ibadah .img-ibadah{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+#bpsd{
+    background: url("../img/bg-pbsd.jpeg") center top no-repeat fixed;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    position: relative;
+}
+
+#bpsd::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: 9;
+}
+
+#bpsd .container {
+    position: relative;
+    z-index: 10;
+}
+
+#baptis {
+    padding: 60px 40px 40px 0;
+}
+
+#baptis .table-responsive{
+    background: #fff;
+    background-size: cover;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#baptis .img-baptis{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+#sidi {
+    padding: 60px 0 40px 40px;
+}
+
+#sidi .table-responsive{
+    background: #fff;
+    background-size: cover;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#sidi .img-sidi{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+#nikah {
+    background: #fff;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+}
+
+#nikah .img-nikah{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}

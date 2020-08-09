@@ -51,7 +51,7 @@
                             <select class="form-control select2" name="id_jemaat_pria" id="id_jemaat_pria">
                                 <option value="" disabled selected>Pilih Calon Suami</option>
                                 @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "laki-laki" && $jemaat->jabatan->jabatan != "pendeta")
+                                    @if ($jemaat->jk == "laki-laki" && $jemaat->jabatan->jabatan != "majelis")
                                         <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_pria == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
                                     @endif
                                 @endforeach
@@ -77,7 +77,7 @@
                             <select class="form-control select2" name="id_jemaat_wanita" id="id_jemaat_wanita">
                                 <option value="" disabled selected>Pilih Calon Istri</option>
                                 @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "perempuan" && $jemaat->jabatan->jabatan != "pendeta")
+                                    @if ($jemaat->jk == "perempuan" && $jemaat->jabatan->jabatan != "majelis")
                                         <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_wanita == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
                                     @endif
                                 @endforeach
@@ -103,7 +103,7 @@
                             <select class="form-control select2" name="id_jemaat_pendeta" id="id_jemaat_pendeta">
                                 <option value="" disabled selected>Pilih Pendeta</option>
                                 @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jabatan->jabatan == "pendeta")
+                                    @if ($jemaat->jabatan->jabatan == "majelis")
                                         <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_pendeta == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
                                     @endif
                                 @endforeach

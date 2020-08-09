@@ -66,7 +66,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Apakah Anda Yakin Ingin Menghapus Pernikahan <strong>{{ $nikah->suami->name }}</strong> dengan <strong>{{ $nikah->istri->name }}</strong></p>
+                                    <p>Apakah Anda Yakin Ingin Menghapus Pernikahan <strong>{{ $nikah->pria->name }}</strong> dengan <strong>{{ $nikah->wanita->name }}</strong></p>
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

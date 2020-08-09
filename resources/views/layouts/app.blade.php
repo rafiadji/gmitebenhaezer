@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    @include('layouts.favicon')
 </head>
 <body class="hold-transition login-page">
     @yield('content')
