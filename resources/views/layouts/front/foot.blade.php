@@ -11,3 +11,4 @@
 <script src="{{ asset('front/vendor/aos/aos.js') }}"></script>
 <!-- Template Main JS File -->
 <script src="{{ asset('front/js/main.js') }}"></script>
+<script src="{{ asset('front/js/my.js') }}"></script>

@@ -5,20 +5,16 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h4>Contact Us</h4>
+                    <h4>Hubungi Kami</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        Jl. Jend. Sudirman No.123,<br>
+                        Sarotari, Larantuka,<br>
+                        Kabupaten Flores Timur, Nusa Tenggara Timur <br>
+                        <strong>Phone:</strong> (0383) 21141<br>
+                        {{-- <strong>Email:</strong> info@example.com<br> --}}
                     </p>
                     <div class="social-links">
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
 
