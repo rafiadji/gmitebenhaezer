@@ -20,7 +20,7 @@
                             </tbody>
                         </table>
                     </div>
-                </section><!-- End About Us Section -->
+                </section>
                 <section id="ibadah" data-aos="fade-left" class="col-md-6">
                     <header class="section-header wow fadeInUp">
                         <h3>Info Ibadah</h3>
@@ -39,7 +39,7 @@
                             </tbody>
                         </table>
                     </div>
-                </section><!-- End About Us Section -->
+                </section>
             </div>
         </div>
     </section>
@@ -47,8 +47,52 @@
         <div class="container" data-aos="fade-right">
             <header class="section-header">
                 <h3>Tentang Kami</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>GMIT Jemaat Ebenhaezer Larantuka adalah jemaat Kristen Diaspora di pulau Flores, salah satu Jemaat dalam Sinode Gereja Masehi Injili di Timor (GMIT) dalam Klasis Flores yang memiliki Mata Jemaat/Pos Pelayanan</p>
             </header>
+            <div class="row tentang-cols">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tentang-col">
+                        <div class="img">
+                            <img src="{{ asset('img/tentang/t1.jpeg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">Mata Jemaat / Pos Pelayanan</a></h2>
+                        <p>
+                            <ol>
+                                <li>Mata Jemaat Imanuel Waiwerang</li>
+                                <li>Mata Jemaat Imanuel Boru</li>
+                                <li>Pos Pelayanan Eklesia Waiwadan</li>
+                                <li>Pos Pelayanan Lahairoi Beloaja</li>
+                                <li>Bakal Pos Pelayanan Menanga</li>
+                            </ol>
+                        </p>
+                    </div>
+                </div> 
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tentang-col">
+                        <div class="img">
+                            <img src="{{ asset('img/tentang/t2.jpeg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">Tema Periode 2020-2023 </a></h2>
+                        <p>
+                            “Roh Tuhan menjadikan dan membaharui segenap ciptaan” (bdk. Mazmur 104:30)
+                        </p>
+                    </div>
+                </div> 
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tentang-col">
+                        <div class="img">
+                            <img src="{{ asset('img/tentang/t3.jpeg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">Sub Tema Tahun Pelayanan 2020 </a></h2>
+                        <p>
+                            “Roh Kudus berkuasa atas gereja, masyarakat dan semesta” (Bdk. I Samuel 16:13; Lukas 4:18-19)
+                        </p>
+                    </div>
+                </div>    
+            </div>
         </div>
     </section>
     <section id="galeri" class="section-bg">
