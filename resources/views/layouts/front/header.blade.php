@@ -11,6 +11,7 @@
                     <ul>
                         <li><a href="#ibadah">Pengumuman & <br> Ibadah</a></li>
                         <li><a href="#tentang">Tentang<br>Kami</a></li>
+                        <li><a href="#majelis">Majelis<br>Kami</a></li>
                         <li><a href="#galeri">Kegiatan</a></li>
                         @if (Route::has('login'))
                             @auth

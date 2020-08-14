@@ -72,7 +72,7 @@
                     <div class="tentang-col">
                         <div class="img">
                             <img src="{{ asset('img/tentang/t2.jpeg') }}" alt="" class="img-fluid">
-                            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Tema Periode 2020-2023 </a></h2>
                         <p>
@@ -102,7 +102,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-right" data-aos-delay="100">
                         <img src="{{ asset('img/majelis/m1.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="200">
                         <img src="{{ asset('img/majelis/m2.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="300">
                         <img src="{{ asset('img/majelis/m3.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-left" data-aos-delay="400">
                         <img src="{{ asset('img/majelis/m4.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-right" data-aos-delay="500">
                         <img src="{{ asset('img/majelis/m5.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="600">
                         <img src="{{ asset('img/majelis/m6.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="700">
                         <img src="{{ asset('img/majelis/m7.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-left" data-aos-delay="800">
                         <img src="{{ asset('img/majelis/m8.png') }}" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
@@ -211,8 +211,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k1.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k1.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 1"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k1.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 1">
+                                <img src="{{ asset('img/kegiatan/k1.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">
@@ -223,8 +224,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k2.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k2.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 2"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k2.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 2">
+                                <img src="{{ asset('img/kegiatan/k2.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">
@@ -235,8 +237,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k3.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k3.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 3"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k3.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 3">
+                                <img src="{{ asset('img/kegiatan/k3.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">
@@ -247,8 +250,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k4.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k4.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 4"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k4.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 4">
+                                <img src="{{ asset('img/kegiatan/k4.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">
@@ -259,8 +263,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k5.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k5.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 5"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k5.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 5">
+                                <img src="{{ asset('img/kegiatan/k5.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">
@@ -271,8 +276,9 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <img src="{{ asset('img/kegiatan/k6.jpeg') }}" class="img-fluid" alt="">
-                            <a href="{{ asset('img/kegiatan/k6.jpeg') }}" class="link-preview venobox" data-gall="portfolioGallery" title="Kegiatan 6"><i class="ion ion-eye"></i></a>
+                            <a href="{{ asset('img/kegiatan/k6.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 6">
+                                <img src="{{ asset('img/kegiatan/k6.jpeg') }}" class="img-fluid" alt="">
+                            </a>
                         </figure>
         
                         <div class="galeri-info">

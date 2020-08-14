@@ -216,7 +216,7 @@
 }
 
 #galeri .galeri-item figure:hover img {
-    opacity: 0.4;
+    opacity: 0.9;
     transition: 0.3s;
 }
 
