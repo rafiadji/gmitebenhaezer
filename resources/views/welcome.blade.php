@@ -95,6 +95,103 @@
             </div>
         </div>
     </section>
+    <section id="majelis">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h3>Majelis Kami</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m1.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pdt. Damaris Y. Tubatonu-Hittu,STh</h4>
+                                <span>Ketua</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m2.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pdt. Marthen Tubatonu,STh</h4>
+                                <span>Wakil ketua I</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m3.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pdt. Merchy Angelia Talan-Letelay,STh,MM</h4>
+                                <span>Wakil ketua II</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m4.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pdt. Barnabas Nenohai</h4>
+                                <span>Wakil ketua III</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m5.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pnt. Drh. Simon Nany, MSc</h4>
+                                <span>Sekretaris</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m6.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pnt. Yermias Here,SPd</h4>
+                                <span>Wakil Sekretaris</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m7.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pnt. Frengky Simboh,SPi</h4>
+                                <span>Bendahara</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="{{ asset('img/majelis/m8.png') }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>Pnt. Margaritha Lodo,SPi</h4>
+                                <span>Wakil Bendahara</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="galeri" class="section-bg">
         <div class="container" data-aos="fade-left">
             <header class="section-header">

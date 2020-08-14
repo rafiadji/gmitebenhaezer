@@ -300,6 +300,78 @@
     text-transform: uppercase;
 }
 
+#majelis {
+  background: #fff;
+  padding: 60px 0;
+}
+
+#majelis .member {
+  text-align: center;
+  margin-bottom: 20px;
+  background: #000;
+  position: relative;
+}
+
+#majelis .member .member-info {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.2s;
+}
+
+#majelis .member .member-info-content {
+  margin-top: -50px;
+  transition: margin 0.2s;
+}
+
+#majelis .member:hover .member-info {
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  transition: 0.4s;
+}
+
+#majelis .member:hover .member-info-content {
+  margin-top: 0;
+  transition: margin 0.4s;
+}
+
+#majelis .member h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #fff;
+}
+
+#majelis .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+  color: #fff;
+}
+
+#majelis .member .social {
+  margin-top: 15px;
+}
+
+#majelis .member .social a {
+  transition: none;
+  color: #fff;
+}
+
+#majelis .member .social a:hover {
+  color: #18d26e;
+}
+
+#majelis .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
 /* #baptis {
     padding: 60px 40px 40px 0;
 }
