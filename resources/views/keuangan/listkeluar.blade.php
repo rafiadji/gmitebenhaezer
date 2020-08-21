@@ -7,12 +7,12 @@
 @endsection
 
 @section('title_head')
-    Pemasukan Gereja
+    Pengeluaran Gereja
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Pemasukan Gereja</li>
+    <li class="breadcrumb-item active">Pengeluaran Gereja</li>
 @endsection
 
 @section('content')
@@ -20,10 +20,10 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data Pemasukan Gereja</h3>
+                <h3 class="card-title">Data Pengeluaran Gereja</h3>
                 <div class="card-tools">
                     @can('create keuangan')
-                    <a href="{{ route('keuangan.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pemasukan Gereja</a>                        
+                    <a href="{{ route('keuangankeluar.create') }}" class="btn btn-block btn-sm bg-gradient-success"><i class="fas fa-plus"></i> Tambah Pengeluaran Gereja</a>
                     @endcan
                 </div>
             </div>
@@ -39,18 +39,18 @@
                 </thead>
                 <tbody>
                     @foreach ($keuangans as $keuangan)
-                    @if ($keuangan->setting->jenis_keuangan == 'pemasukan')
+                    @if ($keuangan->setting->jenis_keuangan == 'pengeluaran')
                     <tr>
                         <td>{{ $keuangan->tgl_keuangan }}</td>
-                        <td>@if ($keuangan->id_set == '1') {{ $keuangan->keterangan_lain }} @else {{ $keuangan->setting->keterangan }} @endif</td>
-                        <td>{{ number_format($keuangan->nominal, 0, ',', '.') }}</td>
+                        <td>@if ($keuangan->id_set == '2') {{ $keuangan->keterangan_lain }} @else {{ $keuangan->setting->keterangan }} @endif</td>
+                        <td>{{ number_format(abs($keuangan->nominal), 0, ',', '.') }}</td>
                         <td>
                             <div class="btn-group">
                                 @can('update keuangan')
-                                <a href="{{ route('keuangan.edit',$keuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>                                                    
+                                <a href="{{ route('keuangankeluar.edit',$keuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
                                 @endcan
                                 @can('delete keuangan')
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $keuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>                                                    
+                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $keuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>
                                 @endcan
                             </div>
                         </td>
@@ -65,11 +65,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Apakah Anda Yakin Ingin Menghapus Data Keuangan <strong>@if ($keuangan->id_set == '1') {{ $keuangan->keterangan_lain }} @else {{ $keuangan->setting->keterangan }} @endif</strong></p>
+                                    <p>Apakah Anda Yakin Ingin Menghapus Data Keuangan <strong>@if ($keuangan->id_set == '2') {{ $keuangan->keterangan_lain }} @else {{ $keuangan->setting->keterangan }} @endif</strong></p>
                                 </div>
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <form action="{{ route('keuangan.destroy',$keuangan->id) }}" method="POST">
+                                    <form action="{{ route('keuangankeluar.destroy',$keuangan->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-light">Ya, Saya Yakin</button>

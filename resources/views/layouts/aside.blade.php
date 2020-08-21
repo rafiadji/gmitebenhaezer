@@ -71,8 +71,14 @@
                 @can('read keuangan')
                 <li class="nav-item">
                     <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
-                        <i class="nav-icon fas fa-hand-holding-usd"></i>
-                        <p>Pemasukan & Pengeluaran</p>
+                        <i class="nav-icon fas fa-file-import"></i>
+                        <p>Pemasukan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('keuangankeluar.index') }}" class="nav-link @if(request()->segment(1) == 'keuangankeluar') active @endif">
+                        <i class="nav-icon fas fa-file-export"></i>
+                        <p>Pengeluaran</p>
                     </a>
                 </li>
                 @endcan

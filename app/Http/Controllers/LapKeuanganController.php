@@ -37,13 +37,13 @@ class LapKeuanganController extends Controller
         $str = "";
         if ($request->input('bulan') == 'all') {
             $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
-            ->orderby('tgl_keuangan')
+            ->orderby('tgl_keuangan', 'desc')
             ->get();
         }
         else{
             $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
             ->whereMonth('tgl_keuangan', $request->input('bulan'))
-            ->orderby('tgl_keuangan')
+            ->orderby('tgl_keuangan', 'desc')
             ->get();
         }
         if(count($keuangans) == 0){

@@ -13,23 +13,23 @@
 @endsection
 
 @section('title_head')
-    Tambah Pemasukan Gereja
+    Tambah Pengeluaran Gereja
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Pemasukan Gereja</a></li>
-    <li class="breadcrumb-item active">Tambah Pemasukan Gereja</li>
+    <li class="breadcrumb-item"><a href="{{ route('keuangankeluar.index') }}">Pengeluaran Gereja</a></li>
+    <li class="breadcrumb-item active">Tambah Pengeluaran Gereja</li>
 @endsection
 
 @section('content')
-<form action="{{ route('keuangan.store') }}" class="form-horizontal" method="POST">
+<form action="{{ route('keuangankeluar.store') }}" class="form-horizontal" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Pemasukan Gereja</h3>
+                    <h3 class="card-title">Tambah Pengeluaran Gereja</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pemasukan</label>
+                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pengeluaran</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="jenis_keuangan" id="jenis_keuangan" value="pemasukan">
+                    <input type="hidden" name="jenis_keuangan" id="jenis_keuangan" value="pengeluaran">
                     <div class="form-group row">
                         <label for="id_set" class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-5">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('keuangan.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('keuangankeluar.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>
@@ -103,8 +103,8 @@
         $.ajax({
             type:"POST",
             dataType:"html",
-            url:"{{ route('keuangan.getData') }}",
-            data:{ 
+            url:"{{ route('keuangankeluar.getData') }}",
+            data:{
                 _token:'{{ csrf_token() }}',
                 jenis:jenis_keuangan
             },

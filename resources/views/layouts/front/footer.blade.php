@@ -3,21 +3,33 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Tema Periode 2020-2023</h4>
+                    <p>
+                        “Roh Tuhan menjadikan dan membaharui segenap ciptaan” (bdk. Mazmur 104:30)
+                        {{-- <strong>Email:</strong> info@example.com<br> --}}
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Sub Tema Tahun Pelayanan 2020</h4>
+                    <p>
+                        “Roh Kudus berkuasa atas gereja, masyarakat dan semesta” (Bdk. I Samuel 16:13; Lukas 4:18-19)
+                        {{-- <strong>Email:</strong> info@example.com<br> --}}
+                    </p>
+                </div>
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Hubungi Kami</h4>
                     <p>
                         Jl. Jend. Sudirman No.123,<br>
                         Sarotari, Larantuka,<br>
                         Kabupaten Flores Timur, Nusa Tenggara Timur <br>
-                        <strong>Phone:</strong> (0383) 21141<br>
+                        <strong>Telepon:</strong> (0383) 21141<br>
                         {{-- <strong>Email:</strong> info@example.com<br> --}}
                     </p>
                     <div class="social-links">
                         <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

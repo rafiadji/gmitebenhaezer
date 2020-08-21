@@ -31,6 +31,17 @@ class KeuanganController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_keluar()
+    {
+        $keuangans = Keuangan::orderBy('id', 'desc')->get();
+        return view('keuangan.listkeluar', compact('keuangans'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,6 +49,16 @@ class KeuanganController extends Controller
     public function create()
     {
         return view('keuangan.create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_keluar()
+    {
+        return view('keuangan.createkeluar');
     }
 
     /**
@@ -62,8 +83,14 @@ class KeuanganController extends Controller
 
         Keuangan::create($request->except(['jenis_keuangan']));
 
-        return redirect()->route('keuangan.index')
-                        ->with('success','Data Keuangan baru berhasil ditambahkan.');
+        if ($request->input("jenis_keuangan") == "pengeluaran") {
+            return redirect()->route('keuangankeluar.index')
+                            ->with('success','Data Keuangan baru berhasil ditambahkan.');
+        }
+        else{
+            return redirect()->route('keuangan.index')
+                            ->with('success','Data Keuangan baru berhasil ditambahkan.');
+        }
     }
 
     /**
@@ -84,6 +111,17 @@ class KeuanganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Keuangan $keuangan)
+    {
+        return view('keuangan.edit', compact('keuangan'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Keuangan  $keuangan
+     * @return \Illuminate\Http\Response
+     */
+    public function edit_keluar(Keuangan $keuangan)
     {
         return view('keuangan.edit', compact('keuangan'));
     }
@@ -111,8 +149,14 @@ class KeuanganController extends Controller
 
         $keuangan->update($request->except(['jenis_keuangan']));
 
-        return redirect()->route('keuangan.index')
-                        ->with('success','Data Keuangan berhasil diubah.');
+        if ($request->input("jenis_keuangan") == "pengeluaran") {
+            return redirect()->route('keuangankeluar.index')
+                            ->with('success','Data Keuangan berhasil diubah.');
+        }
+        else{
+            return redirect()->route('keuangan.index')
+                            ->with('success','Data Keuangan berhasil diubah.');
+        }
     }
 
     /**
@@ -126,6 +170,20 @@ class KeuanganController extends Controller
         $keuangan->delete();
 
         return redirect()->route('keuangan.index')
+                        ->with('success','Data Keuangan berhasil dihapus.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Keuangan  $keuangan
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_keluar(Keuangan $keuangan)
+    {
+        $keuangan->delete();
+
+        return redirect()->route('keuangankeluar.index')
                         ->with('success','Data Keuangan berhasil dihapus.');
     }
 

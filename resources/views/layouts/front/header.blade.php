@@ -13,6 +13,7 @@
                         <li><a href="#tentang">Tentang<br>Kami</a></li>
                         <li><a href="#majelis">Majelis<br>Kami</a></li>
                         <li><a href="#galeri">Kegiatan</a></li>
+                        <li><a href="#contact">Hubungi<br>Kami</a></li>
                         @if (Route::has('login'))
                             @auth
                                 <li>

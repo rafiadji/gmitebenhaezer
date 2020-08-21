@@ -13,13 +13,13 @@
 @endsection
 
 @section('title_head')
-    Ubah Keuangan Gereja
+    Ubah Pemasukan Gereja
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Keuangan Gereja</a></li>
-    <li class="breadcrumb-item active">Ubah Keuangan Gereja</li>
+    <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Pemasukan Gereja</a></li>
+    <li class="breadcrumb-item active">Ubah Pemasukan Gereja</li>
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Ubah Keuangan Gereja</h3>
+                    <h3 class="card-title">Ubah Pemasukan Gereja</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pemasukan / Pengeluaran</label>
+                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pemasukan</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -51,16 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="jenis_keuangan" class="col-sm-3 col-form-label">Jenis Keuangan</label>
-                        <div class="col-sm-5">
-                            <select class="form-control select2" name="jenis_keuangan" id="jenis_keuangan">
-                                <option value="" disabled selected>Pilih Jenis keuangan</option>
-                                <option value="pemasukan" @if ($keuangan->setting->jenis_keuangan == "pemasukan") selected @endif>Pemasukan</option>
-                                <option value="pengeluaran" @if ($keuangan->setting->jenis_keuangan == "pengeluaran") selected @endif>Pengeluaran</option>
-                            </select>
-                        </div>
-                    </div>
+                    <input type="hidden" name="jenis_keuangan" id="jenis_keuangan" value="pemasukan">
                     <div class="form-group row">
                         <label for="id_set" class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-5">
@@ -148,23 +139,6 @@
         })
         $('.select2').select2({
             theme: 'bootstrap4'
-        });
-        $('#jenis_keuangan').change(function() {
-            var jenis_keuangan = $('#jenis_keuangan').val();
-            $.ajax({
-                type:"POST",
-                dataType:"html",
-                url:"{{ route('keuangan.getData') }}",
-                data:{ 
-                    _token:'{{ csrf_token() }}',
-                    jenis:jenis_keuangan
-                },
-                success: function(data) {
-                    $('#id_set').html(data);
-                    $('#keterangan_lain').prop('disabled', true);
-                    $('#keterangan_lain').val("");
-                }
-            });
         });
         $('#id_set').change(function() {
             var id_set = $('#id_set').val();

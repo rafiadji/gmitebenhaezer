@@ -67,7 +67,7 @@
                             </ol>
                         </p>
                     </div>
-                </div> 
+                </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="tentang-col">
                         <div class="img">
@@ -79,7 +79,7 @@
                             “Roh Tuhan menjadikan dan membaharui segenap ciptaan” (bdk. Mazmur 104:30)
                         </p>
                     </div>
-                </div> 
+                </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="tentang-col">
                         <div class="img">
@@ -91,7 +91,7 @@
                             “Roh Kudus berkuasa atas gereja, masyarakat dan semesta” (Bdk. I Samuel 16:13; Lukas 4:18-19)
                         </p>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </section>
@@ -215,7 +215,7 @@
                                 <img src="{{ asset('img/kegiatan/k1.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 1</h4>
                         </div>
@@ -228,7 +228,7 @@
                                 <img src="{{ asset('img/kegiatan/k2.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 2</h4>
                         </div>
@@ -241,7 +241,7 @@
                                 <img src="{{ asset('img/kegiatan/k3.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 3</h4>
                         </div>
@@ -254,7 +254,7 @@
                                 <img src="{{ asset('img/kegiatan/k4.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 4</h4>
                         </div>
@@ -267,7 +267,7 @@
                                 <img src="{{ asset('img/kegiatan/k5.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 5</h4>
                         </div>
@@ -280,7 +280,7 @@
                                 <img src="{{ asset('img/kegiatan/k6.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>
-        
+
                         <div class="galeri-info">
                             <h4>Kegiatan 6</h4>
                         </div>
@@ -289,6 +289,34 @@
             </div>
         </div>
     </section>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h3>Hubungi Kami</h3>
+                <p>Anda dapat Menghubungi kami di :</p>
+            </div>
+            <div>
+                <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJF4CPlDt-rC0RKpr8LOu7D_E&key=AIzaSyCyN-AubX-z5kjWASGWgJ7z0QmqM_zPq9Q" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="row contact-info">
+                <div class="col-md-6">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Alamat</h3>
+                        <address>Jl. Jend. Sudirman No.123, Sarotari, Larantuka, Kabupaten Flores Timur, Nusa Tenggara Timur </address>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Nomor Telepon</h3>
+                        <p><a href="tel:(0383)21141">(0383) 21141</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
     @foreach ($pengumumans as $pengumuman)
     <div class="modal fade" id="detailPengumuman{{ $pengumuman->id }}">
         <div class="modal-dialog modal-lg">
@@ -303,7 +331,7 @@
                     <p>{!! $pengumuman->isi !!}</p>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    
+
                 </div>
             </div>
         </div>
@@ -348,7 +376,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    
+
                 </div>
             </div>
         </div>

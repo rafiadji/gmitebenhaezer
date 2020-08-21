@@ -16,7 +16,7 @@
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown">Siaga Covid 19</h2>
-                            <p class="animate__animated animate__fadeInUp">Segenap Majelis GMIT Ebenhaezer Larntuka mengucapkan Kami siaga Covid 19</p>
+                            <p class="animate__animated animate__fadeInUp">Segenap Majelis GMIT Ebenhaezer Larantuka mengucapkan Kami siaga Covid 19</p>
                         </div>
                     </div>
                 </div>

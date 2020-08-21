@@ -13,44 +13,45 @@
 @endsection
 
 @section('title_head')
-    Tambah Pemasukan Gereja
+    Ubah Pengeluaran Gereja
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Pemasukan Gereja</a></li>
-    <li class="breadcrumb-item active">Tambah Pemasukan Gereja</li>
+    <li class="breadcrumb-item"><a href="{{ route('keuangankeluar.index') }}">Pegeluaran Gereja</a></li>
+    <li class="breadcrumb-item active">Ubah Pegeluaran Gereja</li>
 @endsection
 
 @section('content')
-<form action="{{ route('keuangan.store') }}" class="form-horizontal" method="POST">
+<form action="{{ route('keuangankeluar.update', $keuangan->id) }}" class="form-horizontal" method="POST">
     @csrf
+    @method('PUT')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Pemasukan Gereja</h3>
+                    <h3 class="card-title">Ubah Keuangan Gereja</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="nama_user" class="col-sm-3 col-form-label">Author</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="nama_user" name="nama_user" value="{{ Auth::user()->name }}" disabled>
-                            <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
+                            <input type="text" class="form-control" id="nama_user" name="nama_user" value="{{ $keuangan->user->name }}" disabled>
+                            <input type="hidden" name="id_user" value="{{ $keuangan->id_user }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pemasukan</label>
+                        <label for="tgl_keuangan" class="col-sm-3 col-form-label">Tanggal Pengeluaran</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                                 </div>
-                                <input type="text" id="tgl_keuangan" name="tgl_keuangan" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                                <input type="text" id="tgl_keuangan" name="tgl_keuangan" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask value="{{ $keuangan->tgl_keuangan }}">
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="jenis_keuangan" id="jenis_keuangan" value="pemasukan">
+                    <input type="hidden" name="jenis_keuangan" id="jenis_keuangan" value="pengeluaran">
                     <div class="form-group row">
                         <label for="id_set" class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-5">
@@ -62,7 +63,7 @@
                     <div class="form-group row">
                         <label for="keterangan_lain" class="col-sm-3 col-form-label">Keterangan Lain</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="keterangan_lain" name="keterangan_lain" placeholder="Keterangan Lain" disabled>
+                            <input type="text" class="form-control" id="keterangan_lain" name="keterangan_lain" placeholder="Keterangan Lain" disabled value="{{ $keuangan->keterangan_lain }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -72,14 +73,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp</span>
                                 </div>
-                                <input type="text" id="nominal" name="nominal" class="form-control" data-inputmask-alias="currency" >
+                                <input type="text" id="nominal" name="nominal" class="form-control" data-inputmask-alias="currency" value="{{ $keuangan->nominal }}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('keuangan.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('keuangankeluar.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>
@@ -100,19 +101,28 @@
 <script>
     $(function(){
         var jenis_keuangan = $('#jenis_keuangan').val();
+        var id_set_lama = "{{ $keuangan->id_set }}";
         $.ajax({
             type:"POST",
             dataType:"html",
-            url:"{{ route('keuangan.getData') }}",
-            data:{ 
+            url:"{{ route('keuangankeluar.getData') }}",
+            data:{
                 _token:'{{ csrf_token() }}',
-                jenis:jenis_keuangan
+                jenis:jenis_keuangan,
+                id_set:id_set_lama
             },
             success: function(data) {
                 $('#id_set').html(data);
-                $('#keterangan_lain').prop('disabled', true);
+                var id_set = $('#id_set').val();
+                if (id_set == '1' || id_set == '2') {
+                    $('#keterangan_lain').prop('disabled', false);
+                }
+                else{
+                    $('#keterangan_lain').prop('disabled', true);
+                }
             }
         });
+
         $('.datepick').datetimepicker({
             format: 'L'
         });
@@ -132,6 +142,7 @@
         });
         $('#id_set').change(function() {
             var id_set = $('#id_set').val();
+            $('#keterangan_lain').val("");
             if (id_set == '1' || id_set == '2') {
                 $('#keterangan_lain').prop('disabled', false);
             }
