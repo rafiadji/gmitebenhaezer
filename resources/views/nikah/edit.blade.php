@@ -96,7 +96,7 @@
                             <input type="text" class="form-control" id="name_saksi_w_2" name="name_saksi_w_2" placeholder="Nama Saksi 2" value="{{ $nikah->name_saksi_w_2 }}">
                         </div>
                     </div>
-                    <h5>Data Majelis</h5>
+                    <h5>Data Pendeta</h5>
                     <div class="form-group row">
                         <label for="id_jemaat_pendeta" class="col-sm-3 col-form-label">Pendeta</label>
                         <div class="col-sm-5">
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-    
+
 </form>
 @endsection
 

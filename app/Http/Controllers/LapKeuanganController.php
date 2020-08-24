@@ -84,16 +84,121 @@ class LapKeuanganController extends Controller
      */
     public function getSaldo(Request $request)
     {
+        $bulans = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+        $str = "";
+        $ttl_pemasukan = 0;
+        $ttl_pengeluaran = 0;
         if ($request->input('bulan') == 'all') {
-            $saldo = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->get();
+            $saldo = Keuangan::whereYear('tgl_keuangan', '<=', $request->input('tahun'))
             ->sum('nominal');
+            $saldo_sebelum = Keuangan::whereYear('tgl_keuangan', '<', $request->input('tahun'))
+            ->sum('nominal');
+            $ttl_saldo = Keuangan::sum('nominal');
+
+            foreach ($keuangans as $keuangan) {
+                if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
+                    $ttl_pemasukan += $keuangan->nominal;
+                }
+                if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
+                    $ttl_pengeluaran += abs($keuangan->nominal);
+                }
+            }
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Awal Tahun ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($saldo_sebelum, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Total Pemasukan Tahun ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_pemasukan, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Total Pengeluaran Tahun ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_pengeluaran, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Tahun ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($saldo, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Di Bendahara</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_saldo, 0, ',', '.')."</td>";
+            $str .= "</tr>";
         }
         else{
-            $saldo = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            $i_bln = $request->input('bulan') - 1;
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
             ->whereMonth('tgl_keuangan', $request->input('bulan'))
-            ->sum('nominal');
+            ->get();
+
+            foreach ($keuangans as $keuangan) {
+                if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
+                    $ttl_pemasukan += $keuangan->nominal;
+                }
+                if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
+                    $ttl_pengeluaran += abs($keuangan->nominal);
+                }
+            }
+
+            if($request->input('bulan') == 1){
+                $saldo_sebelum = Keuangan::whereYear('tgl_keuangan', '<', $request->input('tahun'))
+                ->sum('nominal');
+            }
+            else{
+                $saldo_bln= Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+                ->whereMonth('tgl_keuangan', '<', $request->input('bulan'))
+                ->sum('nominal');
+
+                $saldo_jan = Keuangan::whereYear('tgl_keuangan', '<', $request->input('tahun'))
+                ->sum('nominal');
+
+                $saldo_sebelum = $saldo_bln + $saldo_jan;
+            }
+            $saldo = ($ttl_pemasukan - $ttl_pengeluaran) + $saldo_sebelum;
+            $ttl_saldo = Keuangan::sum('nominal');
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Awal Bulan ".$bulans[$i_bln]." ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($saldo_sebelum, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Total Pemasukan Bulan ".$bulans[$i_bln]." ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_pemasukan, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Total Pengeluaran Bulan ".$bulans[$i_bln]." ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_pengeluaran, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Bulan ".$bulans[$i_bln]." ".$request->input('tahun')."</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($saldo, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+
+            $str .= "<tr>";
+            $str .= "<th style='width:50%'>Saldo Di Bendahara</th>";
+            $str .= "<th>:</th>";
+            $str .= "<td>Rp. ".number_format($ttl_saldo, 0, ',', '.')."</td>";
+            $str .= "</tr>";
         }
-        echo "Rp. ".number_format($saldo, 0, ',', '.');
+        echo $str;
     }
 
 }

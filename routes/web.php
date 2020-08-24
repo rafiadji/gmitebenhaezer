@@ -130,10 +130,10 @@ Route::group(['prefix'=>'keuangankeluar','as'=>'keuangankeluar.'], function(){
     Route::get('', ['as' => 'index', 'uses' => 'KeuanganController@index_keluar'])->middleware('permission:read keuangan');
     Route::post('', ['as' => 'store', 'uses' => 'KeuanganController@store'])->middleware('permission:create keuangan');
     Route::get('/create', ['as' => 'create', 'uses' => 'KeuanganController@create_keluar'])->middleware('permission:create keuangan');
-    Route::get('/{keuangankeluar}', ['as' => 'show', 'uses' => 'KeuanganController@show'])->middleware('permission:read keuangan');
-    Route::put('/{keuangankeluar}', ['as' => 'update', 'uses' => 'KeuanganController@update'])->middleware('permission:update keuangan');
-    Route::delete('/{keuangankeluar}', ['as' => 'destroy', 'uses' => 'KeuanganController@destroy_keluar'])->middleware('permission:delete keuangan');
-    Route::get('/{keuangankeluar}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit_keluar'])->middleware('permission:update keuangan');
+    Route::get('/{keuangan}', ['as' => 'show', 'uses' => 'KeuanganController@show'])->middleware('permission:read keuangan');
+    Route::put('/{keuangan}', ['as' => 'update', 'uses' => 'KeuanganController@update'])->middleware('permission:update keuangan');
+    Route::delete('/{keuangan}', ['as' => 'destroy', 'uses' => 'KeuanganController@destroy_keluar'])->middleware('permission:delete keuangan');
+    Route::get('/{keuangan}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit_keluar'])->middleware('permission:update keuangan');
     Route::post('/getData', ['as' => 'getData', 'uses' => 'KeuanganController@getDaftarKeuangan']);
 });
 

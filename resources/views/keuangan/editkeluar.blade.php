@@ -73,7 +73,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp</span>
                                 </div>
-                                <input type="text" id="nominal" name="nominal" class="form-control" data-inputmask-alias="currency" value="{{ $keuangan->nominal }}">
+                                <input type="text" id="nominal" name="nominal" class="form-control" data-inputmask-alias="currency" value="{{ abs($keuangan->nominal) }}">
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
-      <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="{{ url('/') }}" class="brand-link" style="font-size:1rem">
+      <img src="{{ asset('img/logoaja.png') }}" alt="AdminLTE Logo" class="brand-image elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">GMIT EBENHAEZER</span>
+      <span class="brand-text font-weight-light">EBENHAEZER LARANTUKA</span>
     </a>
 
     <!-- Sidebar -->

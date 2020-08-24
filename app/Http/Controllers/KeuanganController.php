@@ -123,7 +123,7 @@ class KeuanganController extends Controller
      */
     public function edit_keluar(Keuangan $keuangan)
     {
-        return view('keuangan.edit', compact('keuangan'));
+        return view('keuangan.editkeluar', compact('keuangan'));
     }
 
     /**

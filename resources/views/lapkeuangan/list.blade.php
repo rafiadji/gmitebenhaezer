@@ -37,7 +37,7 @@
             <div class="card-header">
                 <h3 class="card-title">Data Laporan Keuangan Gereja</h3>
                 <div class="card-tools">
-                    
+
                 </div>
             </div>
             <div class="card-body">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body table-responsive p-0" style="height: 300px;">
+            <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table class="table table-head-fixed text-nowrap">
                     <thead>
                         <tr>
@@ -74,7 +74,7 @@
                         </tr>
                     </thead>
                     <tbody id="setTable">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -83,10 +83,9 @@
                     <p class="lead"></p>
                     <div class="table-responsive">
                         <table class="table">
-                            <tr>
-                                <th style="width:50%">Saldo Total:</th>
-                                <td id="setSaldo"></td>
-                            </tr>
+                            <tbody id="setSaldo">
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -120,7 +119,7 @@
             type:"POST",
             dataType:"html",
             url:"{{ route('lapkeuangan.getTable') }}",
-            data:{ 
+            data:{
                 _token:'{{ csrf_token() }}',
                 tahun:thn,
                 bulan:bln
@@ -133,7 +132,7 @@
             type:"POST",
             dataType:"html",
             url:"{{ route('lapkeuangan.getSaldo') }}",
-            data:{ 
+            data:{
                 _token:'{{ csrf_token() }}',
                 tahun:thn,
                 bulan:bln
@@ -149,7 +148,7 @@
                 type:"POST",
                 dataType:"html",
                 url:"{{ route('lapkeuangan.getTable') }}",
-                data:{ 
+                data:{
                     _token:'{{ csrf_token() }}',
                     tahun:thn,
                     bulan:bln
@@ -162,7 +161,7 @@
                 type:"POST",
                 dataType:"html",
                 url:"{{ route('lapkeuangan.getSaldo') }}",
-                data:{ 
+                data:{
                     _token:'{{ csrf_token() }}',
                     tahun:thn,
                     bulan:bln
@@ -179,7 +178,7 @@
                 type:"POST",
                 dataType:"html",
                 url:"{{ route('lapkeuangan.getTable') }}",
-                data:{ 
+                data:{
                     _token:'{{ csrf_token() }}',
                     tahun:thn,
                     bulan:bln
@@ -192,7 +191,7 @@
                 type:"POST",
                 dataType:"html",
                 url:"{{ route('lapkeuangan.getSaldo') }}",
-                data:{ 
+                data:{
                     _token:'{{ csrf_token() }}',
                     tahun:thn,
                     bulan:bln
