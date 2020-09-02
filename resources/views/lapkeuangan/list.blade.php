@@ -64,18 +64,21 @@
                 </div>
             </div>
             <div class="card-body table-responsive p-0" style="height: 500px;">
-                <table class="table table-head-fixed text-nowrap">
+                <table class="table table-bordered table-head-fixed text-nowrap">
                     <thead>
                         <tr>
                             <th style="width: 15%">Tgl Pencatatan</th>
                             <th>Keterangan</th>
-                            <th style="width: 15%">Pemasukan (Rp)</th>
-                            <th style="width: 15%">Pengeluaran (Rp)</th>
+                            <th style="width: 15%">Kredit (Rp)</th>
+                            <th style="width: 15%">Debit (Rp)</th>
                         </tr>
                     </thead>
                     <tbody id="setTable">
 
                     </tbody>
+                    <tfoot id="setJumlah">
+                        
+                    </tfoot>
                 </table>
             </div>
             <div class="card-body">
@@ -141,6 +144,19 @@
                 $('#setSaldo').html(data);
             }
         });
+        $.ajax({
+            type:"POST",
+            dataType:"html",
+            url:"{{ route('lapkeuangan.getJumlah') }}",
+            data:{
+                _token:'{{ csrf_token() }}',
+                tahun:thn,
+                bulan:bln
+            },
+            success: function(data) {
+                $('#setJumlah').html(data);
+            }
+        });
         $('#tahun').change(function() {
             var thn = $('#tahun').val();
             var bln = $('#bulan').val();
@@ -168,6 +184,19 @@
                 },
                 success: function(data) {
                     $('#setSaldo').html(data);
+                }
+            });
+            $.ajax({
+                type:"POST",
+                dataType:"html",
+                url:"{{ route('lapkeuangan.getJumlah') }}",
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    tahun:thn,
+                    bulan:bln
+                },
+                success: function(data) {
+                    $('#setJumlah').html(data);
                 }
             });
         });
@@ -198,6 +227,19 @@
                 },
                 success: function(data) {
                     $('#setSaldo').html(data);
+                }
+            });
+            $.ajax({
+                type:"POST",
+                dataType:"html",
+                url:"{{ route('lapkeuangan.getJumlah') }}",
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    tahun:thn,
+                    bulan:bln
+                },
+                success: function(data) {
+                    $('#setJumlah').html(data);
                 }
             });
         });

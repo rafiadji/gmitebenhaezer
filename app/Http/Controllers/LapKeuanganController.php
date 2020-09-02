@@ -37,13 +37,13 @@ class LapKeuanganController extends Controller
         $str = "";
         if ($request->input('bulan') == 'all') {
             $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
-            ->orderby('tgl_keuangan', 'desc')
+            ->orderby('tgl_keuangan')
             ->get();
         }
         else{
             $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
             ->whereMonth('tgl_keuangan', $request->input('bulan'))
-            ->orderby('tgl_keuangan', 'desc')
+            ->orderby('tgl_keuangan')
             ->get();
         }
         if(count($keuangans) == 0){
@@ -196,6 +196,60 @@ class LapKeuanganController extends Controller
             $str .= "<th style='width:50%'>Saldo Di Bendahara</th>";
             $str .= "<th>:</th>";
             $str .= "<td>Rp. ".number_format($ttl_saldo, 0, ',', '.')."</td>";
+            $str .= "</tr>";
+        }
+        echo $str;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getJumlah(Request $request)
+    {
+        $bulans = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+        $str = "";
+        $ttl_pemasukan = 0;
+        $ttl_pengeluaran = 0;
+        if ($request->input('bulan') == 'all') {
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->get();
+
+            foreach ($keuangans as $keuangan) {
+                if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
+                    $ttl_pemasukan += $keuangan->nominal;
+                }
+                if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
+                    $ttl_pengeluaran += abs($keuangan->nominal);
+                }
+            }
+
+            $str .= "<tr>";
+            $str .= "<th colspan='2'>Jumlah</th>";
+            $str .= "<th style='width: 15%'>".number_format($ttl_pemasukan, 0, ',', '.')."</th>";
+            $str .= "<th style='width: 15%'>".number_format($ttl_pengeluaran, 0, ',', '.')."</th>";
+            $str .= "</tr>";
+        }
+        else{
+            $i_bln = $request->input('bulan') - 1;
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->whereMonth('tgl_keuangan', $request->input('bulan'))
+            ->get();
+
+            foreach ($keuangans as $keuangan) {
+                if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
+                    $ttl_pemasukan += $keuangan->nominal;
+                }
+                if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
+                    $ttl_pengeluaran += abs($keuangan->nominal);
+                }
+            }
+
+            $str .= "<tr>";
+            $str .= "<th colspan='2'>Jumlah</th>";
+            $str .= "<th style='width: 15%'>".number_format($ttl_pemasukan, 0, ',', '.')."</th>";
+            $str .= "<th style='width: 15%'>".number_format($ttl_pengeluaran, 0, ',', '.')."</th>";
             $str .= "</tr>";
         }
         echo $str;

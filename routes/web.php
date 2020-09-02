@@ -141,4 +141,5 @@ Route::group(['prefix'=>'lapkeuangan','as'=>'lapkeuangan.'], function(){
     Route::get('', ['as' => 'index', 'uses' => 'LapKeuanganController@index']);
     Route::post('/getTable', ['as' => 'getTable', 'uses' => 'LapKeuanganController@getTable']);
     Route::post('/getSaldo', ['as' => 'getSaldo', 'uses' => 'LapKeuanganController@getSaldo']);
+    Route::post('/getJumlah', ['as' => 'getJumlah', 'uses' => 'LapKeuanganController@getJumlah']);
 });
