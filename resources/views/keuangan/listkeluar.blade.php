@@ -16,6 +16,12 @@
 @endsection
 
 @section('content')
+<?php
+    $bulans = array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+    $bulan_sekarang = date("m");
+    $tahun_sekarang = date("Y");
+    $saldo = 0;
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -28,6 +34,29 @@
                 </div>
             </div>
             <div class="card-body">
+                <div class="form-horizontal">
+                    <div class="form-group row">
+                        <label for="tahun" class="col-sm-1 col-form-label">Tahun</label>
+                        <div class="col-sm-2">
+                            <select class="form-control select2" name="tahun" id="tahun">
+                                @for ($i = 2018; $i < 3030; $i++)
+                                <option value="{{ $i }}" @if ($i == $tahun_sekarang) selected @endif>{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <label for="bulan" class="col-sm-1 col-form-label">Bulan</label>
+                        <div class="col-sm-2">
+                            <select class="form-control select2" name="bulan" id="bulan">
+                                <option value="all" selected>Semua Bulan</option>
+                                @foreach($bulans as $key => $val)
+                                <option value="{{ $key+1 }}" @if (($key+1) == $bulan_sekarang) selected @endif>{{ $val }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
                 <table class="table table-bordered table-striped datatabel">
                 <thead>
                 <tr>
@@ -37,24 +66,9 @@
                     <th style="width: 25%">Aksi</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="setTable">
                     @foreach ($keuangans as $keuangan)
                     @if ($keuangan->setting->jenis_keuangan == 'pengeluaran')
-                    <tr>
-                        <td>{{ $keuangan->tgl_keuangan }}</td>
-                        <td>@if ($keuangan->id_set == '2') {{ $keuangan->keterangan_lain }} @else {{ $keuangan->setting->keterangan }} @endif</td>
-                        <td>{{ number_format(abs($keuangan->nominal), 0, ',', '.') }}</td>
-                        <td>
-                            <div class="btn-group">
-                                @can('update keuangan')
-                                <a href="{{ route('keuangankeluar.edit',$keuangan->id) }}" class="btn btn-sm bg-gradient-info"><i class="fas fa-pencil-alt"></i> Ubah</a>
-                                @endcan
-                                @can('delete keuangan')
-                                <button type="button" class="btn btn-sm bg-gradient-danger" data-toggle="modal" data-target="#confrimModal{{ $keuangan->id }}"><i class="fas fa-trash"></i> Hapus</button>
-                                @endcan
-                            </div>
-                        </td>
-                    </tr>
                     <div class="modal fade" id="confrimModal{{ $keuangan->id }}">
                         <div class="modal-dialog">
                             <div class="modal-content bg-danger">
@@ -96,6 +110,55 @@
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <script>
     $(function(){
+        var thn = $('#tahun').val();
+        var bln = $('#bulan').val();
+        $.ajax({
+            type:"POST",
+            dataType:"html",
+            url:"{{ route('keuangankeluar.getTable') }}",
+            data:{
+                _token:'{{ csrf_token() }}',
+                tahun:thn,
+                bulan:bln
+            },
+            success: function(data) {
+                $('#setTable').html(data);
+            }
+        });
+        $('#tahun').change(function() {
+            var thn = $('#tahun').val();
+            var bln = $('#bulan').val();
+            $.ajax({
+                type:"POST",
+                dataType:"html",
+                url:"{{ route('keuangankeluar.getTable') }}",
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    tahun:thn,
+                    bulan:bln
+                },
+                success: function(data) {
+                    $('#setTable').html(data);
+                }
+            });
+        });
+        $('#bulan').change(function() {
+            var thn = $('#tahun').val();
+            var bln = $('#bulan').val();
+            $.ajax({
+                type:"POST",
+                dataType:"html",
+                url:"{{ route('keuangankeluar.getTable') }}",
+                data:{
+                    _token:'{{ csrf_token() }}',
+                    tahun:thn,
+                    bulan:bln
+                },
+                success: function(data) {
+                    $('#setTable').html(data);
+                }
+            });
+        });
         $(".datatabel").DataTable({
             "ordering": false,
         });

@@ -208,4 +208,116 @@ class KeuanganController extends Controller
             }
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTable(Request $request)
+    {
+        $str = "";
+        if ($request->input('bulan') == 'all') {
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->orderby('tgl_keuangan')
+            ->get();
+        }
+        else{
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->whereMonth('tgl_keuangan', $request->input('bulan'))
+            ->orderby('tgl_keuangan')
+            ->get();
+        }
+        if(count($keuangans) == 0){
+            $str .= "<tr>";
+            $str .= "<td colspan='4' style='text-align:center'>Tidak Ada Data Pemasukan</td>";
+            $str .= "</tr>";
+        }
+        else{
+            foreach ($keuangans as $keuangan):
+                if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
+                    $str .= "<tr>";
+                    $str .= "<td>$keuangan->tgl_keuangan</td>";
+                    if ($keuangan->id_set == '1') {
+                        $str .= "<td>".$keuangan->keterangan_lain."</td>";
+                    }
+                    else{
+                        $str .= "<td>".$keuangan->setting->keterangan."</td>";
+                    }
+                    $str .= "<td>";
+                    $str .= number_format($keuangan->nominal, 0, ',', '.');
+                    
+                    $str .= "</td>";
+                    $str .= "<td>";
+                    $str .= "<div class='btn-group'>";
+                    if (auth()->user()->can('update keuangan')){
+                    $str .= "<a href='route('keuangan.edit',$keuangan->id)' class='btn btn-sm bg-gradient-info'><i class='fas fa-pencil-alt'></i> Ubah</a>";
+                    }
+                    if (auth()->user()->can('delete keuangan')) {
+                    $str .= "<button type='button' class='btn btn-sm bg-gradient-danger' data-toggle='modal' data-target='#confrimModal$keuangan->id'><i class='fas fa-trash'></i> Hapus</button>";
+                    }
+                    $str .= "</div>";
+                    $str .= "</td>";
+                    $str .= "</tr>";
+                }
+            endforeach;
+        }
+        echo $str;
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTableKeluar(Request $request)
+    {
+        $str = "";
+        if ($request->input('bulan') == 'all') {
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->orderby('tgl_keuangan')
+            ->get();
+        }
+        else{
+            $keuangans = Keuangan::whereYear('tgl_keuangan', $request->input('tahun'))
+            ->whereMonth('tgl_keuangan', $request->input('bulan'))
+            ->orderby('tgl_keuangan')
+            ->get();
+        }
+        if(count($keuangans) == 0){
+            $str .= "<tr>";
+            $str .= "<td colspan='4' style='text-align:center'>Tidak Ada Data Pengeluaran</td>";
+            $str .= "</tr>";
+        }
+        else{
+            foreach ($keuangans as $keuangan):
+                if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
+                    $str .= "<tr>";
+                    $str .= "<td>$keuangan->tgl_keuangan</td>";
+                    if ($keuangan->id_set == '2') {
+                        $str .= "<td>".$keuangan->keterangan_lain."</td>";
+                    }
+                    else{
+                        $str .= "<td>".$keuangan->setting->keterangan."</td>";
+                    }
+                    $str .= "<td>";
+                    $str .= number_format(abs($keuangan->nominal), 0, ',', '.');
+                    
+                    $str .= "</td>";
+                    $str .= "<td>";
+                    $str .= "<div class='btn-group'>";
+                    if (auth()->user()->can('update keuangan')){
+                    $str .= "<a href='route('keuangan.edit',$keuangan->id)' class='btn btn-sm bg-gradient-info'><i class='fas fa-pencil-alt'></i> Ubah</a>";
+                    }
+                    if (auth()->user()->can('delete keuangan')) {
+                    $str .= "<button type='button' class='btn btn-sm bg-gradient-danger' data-toggle='modal' data-target='#confrimModal$keuangan->id'><i class='fas fa-trash'></i> Hapus</button>";
+                    }
+                    $str .= "</div>";
+                    $str .= "</td>";
+                    $str .= "</tr>";
+                }
+            endforeach;
+        }
+        echo $str;
+    }
 }

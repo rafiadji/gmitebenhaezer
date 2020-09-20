@@ -124,6 +124,7 @@ Route::group(['prefix'=>'keuangan','as'=>'keuangan.'], function(){
     Route::delete('/{keuangan}', ['as' => 'destroy', 'uses' => 'KeuanganController@destroy'])->middleware('permission:delete keuangan');
     Route::get('/{keuangan}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit'])->middleware('permission:update keuangan');
     Route::post('/getData', ['as' => 'getData', 'uses' => 'KeuanganController@getDaftarKeuangan']);
+    Route::post('/getTable', ['as' => 'getTable', 'uses' => 'KeuanganController@getTable']);
 });
 
 Route::group(['prefix'=>'keuangankeluar','as'=>'keuangankeluar.'], function(){
@@ -135,6 +136,7 @@ Route::group(['prefix'=>'keuangankeluar','as'=>'keuangankeluar.'], function(){
     Route::delete('/{keuangan}', ['as' => 'destroy', 'uses' => 'KeuanganController@destroy_keluar'])->middleware('permission:delete keuangan');
     Route::get('/{keuangan}/edit', ['as' => 'edit', 'uses' => 'KeuanganController@edit_keluar'])->middleware('permission:update keuangan');
     Route::post('/getData', ['as' => 'getData', 'uses' => 'KeuanganController@getDaftarKeuangan']);
+    Route::post('/getTable', ['as' => 'getTable', 'uses' => 'KeuanganController@getTableKeluar']);
 });
 
 Route::group(['prefix'=>'lapkeuangan','as'=>'lapkeuangan.'], function(){
