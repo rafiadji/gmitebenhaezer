@@ -62,7 +62,7 @@
                 <tr>
                     <th>Tanggal</th>
                     <th>Keterangan</th>
-                    <th>Nominal (Rp)</th>
+                    <th style="width: 20%">Nominal (Rp)</th>
                     <th style="width: 25%">Aksi</th>
                 </tr>
                 </thead>

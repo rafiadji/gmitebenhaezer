@@ -61,12 +61,12 @@ class LapKeuanganController extends Controller
                 else{
                     $str .= "<td>".$keuangan->setting->keterangan."</td>";
                 }
-                $str .= "<td>";
+                $str .= "<td style='text-align:right'>";
                 if ($keuangan->setting->jenis_keuangan == 'pemasukan') {
                     $str .= number_format($keuangan->nominal, 0, ',', '.');
                 }
                 $str .= "</td>";
-                $str .= "<td>";
+                $str .= "<td style='text-align:right'>";
                 if ($keuangan->setting->jenis_keuangan == 'pengeluaran') {
                     $str .= number_format(abs($keuangan->nominal), 0, ',', '.');
                 }
@@ -227,8 +227,8 @@ class LapKeuanganController extends Controller
 
             $str .= "<tr>";
             $str .= "<th colspan='2'>Jumlah</th>";
-            $str .= "<th style='width: 15%'>".number_format($ttl_pemasukan, 0, ',', '.')."</th>";
-            $str .= "<th style='width: 15%'>".number_format($ttl_pengeluaran, 0, ',', '.')."</th>";
+            $str .= "<th style='width: 15%; text-align:right;'>".number_format($ttl_pemasukan, 0, ',', '.')."</th>";
+            $str .= "<th style='width: 15%; text-align:right;'>".number_format($ttl_pengeluaran, 0, ',', '.')."</th>";
             $str .= "</tr>";
         }
         else{

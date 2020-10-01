@@ -244,7 +244,7 @@ class KeuanganController extends Controller
                     else{
                         $str .= "<td>".$keuangan->setting->keterangan."</td>";
                     }
-                    $str .= "<td>";
+                    $str .= "<td style='text-align:right'>";
                     $str .= number_format($keuangan->nominal, 0, ',', '.');
                     
                     $str .= "</td>";
@@ -300,7 +300,7 @@ class KeuanganController extends Controller
                     else{
                         $str .= "<td>".$keuangan->setting->keterangan."</td>";
                     }
-                    $str .= "<td>";
+                    $str .= "<td style='text-align:right'>";
                     $str .= number_format(abs($keuangan->nominal), 0, ',', '.');
                     
                     $str .= "</td>";
