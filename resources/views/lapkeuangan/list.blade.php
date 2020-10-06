@@ -41,7 +41,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('lapkeuangan.export') }}" method="POST">
+                    @csrf
                     <div class="form-group row">
                         <label for="tahun" class="col-sm-1 col-form-label">Tahun</label>
                         <div class="col-sm-2">
@@ -60,8 +61,12 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-sm-2 offset-sm-4">
+                            <button class="form-control btn btn-success pull-right" id="export">EXPORT EXCEL</button>
+                            {{-- <a href="/lapkeuangan/export" class="form-control btn btn-success pull-right" target="_blank">EXPORT EXCEL</a> --}}
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table class="table table-bordered table-head-fixed text-nowrap">

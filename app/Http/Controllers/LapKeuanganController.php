@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Keuangan;
+use App\Exports\Lapexport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class LapKeuanganController extends Controller
@@ -253,6 +255,19 @@ class LapKeuanganController extends Controller
             $str .= "</tr>";
         }
         echo $str;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function export_excel(Request $request)
+    {
+        $ti = "backup_".date("dmYHis");
+        $year = $request->input('tahun');
+        $month = $request->input('bulan');
+        return Excel::download(new Lapexport($year, $month), "$ti.xlsx");
     }
 
 }
