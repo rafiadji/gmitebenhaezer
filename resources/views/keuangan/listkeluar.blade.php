@@ -34,7 +34,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="form-horizontal">
+                <form action="{{ route('keuangankeluar.getTable') }}" class="form-horizontal" method="POST">
+                    @csrf
                     <div class="form-group row">
                         <label for="tahun" class="col-sm-1 col-form-label">Tahun</label>
                         <div class="col-sm-2">
@@ -47,14 +48,17 @@
                         <label for="bulan" class="col-sm-1 col-form-label">Bulan</label>
                         <div class="col-sm-2">
                             <select class="form-control select2" name="bulan" id="bulan">
-                                <option value="all" selected>Semua Bulan</option>
+                                <option value="all" @if ($bulan_nya == "all") selected @endif>Semua Bulan</option>
                                 @foreach($bulans as $key => $val)
-                                <option value="{{ $key+1 }}" @if (($key+1) == $bulan_sekarang) selected @endif>{{ $val }}</option>
+                                <option value="{{ $key+1 }}" @if (($key+1) == $bulan_nya) selected @endif>{{ $val }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-sm-2">
+                            <button type='submit' class='form-control btn btn-sm bg-gradient-info'><i class='fas fa-filter'></i> Filter</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped datatabel">
@@ -66,9 +70,22 @@
                     <th style="width: 25%">Aksi</th>
                 </tr>
                 </thead>
-                <tbody id="setTable">
+                <tbody>
                     @foreach ($keuangans as $keuangan)
                     @if ($keuangan->setting->jenis_keuangan == 'pengeluaran')
+                    <tr>
+                        <td>{{ $keuangan->tgl_keuangan }}</td>
+                        @if ($keuangan->id_set == '2')
+                            <td>{{ $keuangan->keterangan_lain }}</td>
+                        @else
+                            <td>{{ $keuangan->setting->keterangan }}</td>
+                        @endif
+                        <td style='text-align:right'>{{ number_format(abs($keuangan->nominal), 0, ',', '.') }}</td>
+                        <td>
+                            <a href="{{ route('keuangan.edit',$keuangan->id) }}" class='btn btn-sm bg-gradient-info'><i class='fas fa-pencil-alt'></i> Ubah</a>
+                            <button type='button' class='btn btn-sm bg-gradient-danger' data-toggle='modal' data-target="#confrimModal{{ $keuangan->id }}"><i class='fas fa-trash'></i> Hapus</button>
+                        </td>
+                    </tr>
                     <div class="modal fade" id="confrimModal{{ $keuangan->id }}">
                         <div class="modal-dialog">
                             <div class="modal-content bg-danger">
@@ -110,55 +127,6 @@
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <script>
     $(function(){
-        var thn = $('#tahun').val();
-        var bln = $('#bulan').val();
-        $.ajax({
-            type:"POST",
-            dataType:"html",
-            url:"{{ route('keuangankeluar.getTable') }}",
-            data:{
-                _token:'{{ csrf_token() }}',
-                tahun:thn,
-                bulan:bln
-            },
-            success: function(data) {
-                $('#setTable').html(data);
-            }
-        });
-        $('#tahun').change(function() {
-            var thn = $('#tahun').val();
-            var bln = $('#bulan').val();
-            $.ajax({
-                type:"POST",
-                dataType:"html",
-                url:"{{ route('keuangankeluar.getTable') }}",
-                data:{
-                    _token:'{{ csrf_token() }}',
-                    tahun:thn,
-                    bulan:bln
-                },
-                success: function(data) {
-                    $('#setTable').html(data);
-                }
-            });
-        });
-        $('#bulan').change(function() {
-            var thn = $('#tahun').val();
-            var bln = $('#bulan').val();
-            $.ajax({
-                type:"POST",
-                dataType:"html",
-                url:"{{ route('keuangankeluar.getTable') }}",
-                data:{
-                    _token:'{{ csrf_token() }}',
-                    tahun:thn,
-                    bulan:bln
-                },
-                success: function(data) {
-                    $('#setTable').html(data);
-                }
-            });
-        });
         $(".datatabel").DataTable({
             "ordering": false,
         });
