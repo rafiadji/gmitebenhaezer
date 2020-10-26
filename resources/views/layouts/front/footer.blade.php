@@ -27,7 +27,7 @@
                         {{-- <strong>Email:</strong> info@example.com<br> --}}
                     </p>
                     <div class="social-links">
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/groups/307746179300603/?ref=share" class="facebook"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
