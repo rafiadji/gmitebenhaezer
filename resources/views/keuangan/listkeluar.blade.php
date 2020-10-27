@@ -82,8 +82,14 @@
                         @endif
                         <td style='text-align:right'>{{ number_format(abs($keuangan->nominal), 0, ',', '.') }}</td>
                         <td>
-                            <a href="{{ route('keuangan.edit',$keuangan->id) }}" class='btn btn-sm bg-gradient-info'><i class='fas fa-pencil-alt'></i> Ubah</a>
-                            <button type='button' class='btn btn-sm bg-gradient-danger' data-toggle='modal' data-target="#confrimModal{{ $keuangan->id }}"><i class='fas fa-trash'></i> Hapus</button>
+                            <div class="btn-group">
+                                @can('update keuangan')
+                                <a href="{{ route('keuangan.edit',$keuangan->id) }}" class='btn btn-sm bg-gradient-info'><i class='fas fa-pencil-alt'></i> Ubah</a>
+                                @endcan
+                                @can('delete keuangan')
+                                <button type='button' class='btn btn-sm bg-gradient-danger' data-toggle='modal' data-target="#confrimModal{{ $keuangan->id }}"><i class='fas fa-trash'></i> Hapus</button>
+                                @endcan
+                            </div>
                         </td>
                     </tr>
                     <div class="modal fade" id="confrimModal{{ $keuangan->id }}">
