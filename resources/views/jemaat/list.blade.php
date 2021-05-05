@@ -106,18 +106,23 @@
                         <tr><th>Jenis Kelamin</th><td>{{ $jemaat->jk }}</td></tr>
                         <tr><th>No. Telp</th><td>{{ $jemaat->no_tlp }}</td></tr>
                         <tr><th>Tempat Lahir</th><td>{{ $jemaat->tempat_lahir }}</td></tr>
-                        <tr><th>Tanggal Lahir</th><td>{{ $jemaat->tgl_lahir }}</td></tr>
+                        <tr><th>Tanggal Lahir</th><td>{{ date('d F Y', strtotime($jemaat->tgl_lahir)) }}</td></tr>
                         <tr><th>Alamat</th><td>{{ $jemaat->alamat }}</td></tr>
+                        <tr><th>Status Keluarga</th><td>{{ $jemaat->status_keluarga }}</td></tr>
                         <tr><th>Email</th><td>{{ $jemaat->user->email }}</td></tr>
                         <tr><th>Nama Baptis</th><td>{{ $jemaat->name_baptis }}</td></tr>
+                        <tr><th>Tanggal Baptis</th><td>@if ($jemaat->tgl_baptis) {{ date('d F Y', strtotime($jemaat->tgl_baptis)) }} @endif</td></tr>
+                        <tr><th>Tanggal Sidi</th><td>@if ($jemaat->tgl_baptis) {{ date('d F Y', strtotime($jemaat->tgl_sidi)) }} @endif</td></tr>
+                        <tr><th>Tanggal Pernikahan</th><td>@if ($jemaat->tgl_baptis) {{ date('d F Y', strtotime($jemaat->tgl_nikah)) }} @endif</td></tr>
                         <tr><th>Pendidikan</th><td>{{ $jemaat->pendidikan }}</td></tr>
                         <tr><th>Pekerjaan</th><td>{{ $jemaat->pekerjaan }}</td></tr>
+                        <tr><th>Status Aktif</th><td>{{ $jemaat->status_aktif }}</td></tr>
                         <tr><th>Jabatan</th><td>{{ $jemaat->jabatan->jabatan }}</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="modal-footer justify-content-between">
-                
+
             </div>
         </div>
     </div>
