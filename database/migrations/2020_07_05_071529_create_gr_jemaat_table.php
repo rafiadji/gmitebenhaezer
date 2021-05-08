@@ -27,12 +27,13 @@ class CreateGrJemaatTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('alamat', 200)->nullable();
             $table->date('tgl_baptis')->nullable();
-            $table->date('tgl_sidi')->nullable();	
+            $table->date('tgl_sidi')->nullable();
             $table->date('tgl_nikah')->nullable();
             $table->string('pekerjaan', 50)->nullable();
             $table->string('pendidikan', 50)->nullable();
             $table->string('status_keluarga', 10)->nullable();
             $table->string('status_aktif', 15)->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->nullable();
             $table->foreign('id_jabatan')->references('id')->on('gr_jabatan')->onDelete('cascade')->nullable();

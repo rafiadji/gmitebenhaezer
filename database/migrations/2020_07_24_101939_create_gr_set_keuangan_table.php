@@ -15,7 +15,7 @@ class CreateGrSetKeuanganTable extends Migration
     {
         Schema::create('gr_set_keuangan', function (Blueprint $table) {
             $table->id();
-            $table->string('keterangan', 50);
+            $table->text('keterangan');
             $table->string('jenis_keuangan', 20);
             $table->timestamps();
         });

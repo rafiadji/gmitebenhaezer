@@ -80,13 +80,13 @@ class RoleSeeder extends Seeder
 
         $admin_user = User::create([
             'name' => 'Admin',
-            'email' => 'admin@church.com',
+            'email' => 'admin@gmail.com',
             'password'  => bcrypt('admin123')
         ]);
 
         $majelis_user = User::create([
-            'name' => 'Josh Yehezkiel',
-            'email' => 'josh@church.com',
+            'name' => 'Eriech',
+            'email' => 'eriech@gmail.com',
             'password'  => bcrypt('majelis123')
         ]);
 

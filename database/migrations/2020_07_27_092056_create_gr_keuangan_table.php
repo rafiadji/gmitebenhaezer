@@ -18,7 +18,7 @@ class CreateGrKeuanganTable extends Migration
             $table->bigInteger('id_user')->unsigned()->nullable();
             $table->bigInteger('id_set')->unsigned()->nullable();
             $table->date('tgl_keuangan')->nullable();
-            $table->string('keterangan_lain', 50)->nullable();
+            $table->text('keterangan_lain')->nullable();
             $table->integer('nominal');
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->nullable();
