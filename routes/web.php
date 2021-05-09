@@ -146,3 +146,13 @@ Route::group(['prefix'=>'lapkeuangan','as'=>'lapkeuangan.'], function(){
     Route::post('/getJumlah', ['as' => 'getJumlah', 'uses' => 'LapKeuanganController@getJumlah']);
     Route::post('/export', ['as' => 'export', 'uses' => 'LapKeuanganController@export_excel']);
 });
+
+Route::group(['prefix'=>'setmajelis','as'=>'setmajelis.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'SetMajelisController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'SetMajelisController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'SetMajelisController@create']);
+    Route::get('/{setmajelis}', ['as' => 'show', 'uses' => 'SetMajelisController@show']);
+    Route::put('/{setmajelis}', ['as' => 'update', 'uses' => 'SetMajelisController@update']);
+    Route::delete('/{setmajelis}', ['as' => 'destroy', 'uses' => 'SetMajelisController@destroy']);
+    Route::get('/{setmajelis}/edit', ['as' => 'edit', 'uses' => 'SetMajelisController@edit']);
+});

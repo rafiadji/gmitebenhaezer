@@ -18,7 +18,7 @@ class WelcomeController extends Controller
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -30,15 +30,9 @@ class WelcomeController extends Controller
     {
         $pengumumans = Pengumuman::orderBy('id', 'desc')->limit(10)->get();
         $ibadahs = Ibadah::orderBy('id', 'desc')->limit(10)->get();
-        $baptiss = Baptis::orderBy('id', 'desc')->limit(10)->get();
-        $sidis = Sidi::orderBy('id', 'desc')->limit(10)->get();
-        $nikahs = Nikah::orderBy('id', 'desc')->limit(10)->get();
         return view('welcome', [
             'pengumumans' => $pengumumans,
             'ibadahs' => $ibadahs,
-            'baptiss' => $baptiss,
-            'sidis' => $sidis,
-            'nikahs' => $nikahs,
         ]);
     }
 }
