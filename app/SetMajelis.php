@@ -12,7 +12,7 @@ class SetMajelis extends Model
 
     public $timestamps = true;
 
-    public function jemmat()
+    public function jemaat()
     {
         return $this->belongsTo(Jemaat::class, 'id_jemaat_majelis');
     }

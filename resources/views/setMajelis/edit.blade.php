@@ -13,107 +13,65 @@
 @endsection
 
 @section('title_head')
-    Ubah Jadwal Pernikahan
+    Ubah Data Majelis
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('nikah.index') }}">Pernikahan</a></li>
-    <li class="breadcrumb-item active">Ubah Jadwal Pernikahan</li>
+    <li class="breadcrumb-item"><a href="{{ route('setmajelis.index') }}">Setting Majelis</a></li>
+    <li class="breadcrumb-item active">Ubah Data Majelis</li>
 @endsection
 
 @section('content')
-<form action="{{ route('nikah.update', $nikah->id) }}" class="form-horizontal" method="POST">
+<form action="{{ route('setmajelis.update', $setMajelis->id) }}" class="form-horizontal" method="POST">
     @csrf
     @method('PUT')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Ubah Jadwal Pernikahan</h3>
+                    <h3 class="card-title">Ubah Data Majelis</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="tgl_nikah" class="col-sm-3 col-form-label">Tanggal Pernikahan</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                                </div>
-                            <input type="text" id="tgl_nikah" name="tgl_nikah" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask value="{{ $nikah->tgl_nikah }}">
-                            </div>
-                        </div>
-                    </div>
-                    <h5>Data Mempelia Pria</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_pria" class="col-sm-3 col-form-label">Calon Suami</label>
+                        <label for="id_jemaat_majelis" class="col-sm-3 col-form-label">Nama Majelis</label>
                         <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_pria" id="id_jemaat_pria">
-                                <option value="" disabled selected>Pilih Calon Suami</option>
+                            <select class="form-control select2" name="id_jemaat_majelis" id="id_jemaat_majelis">
+                                <option value="" disabled selected>Pilih Nama Majelis</option>
                                 @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "laki-laki" && $jemaat->jabatan->jabatan != "majelis")
-                                        <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_pria == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
-                                    @endif
+                                    <option value="{{ $jemaat->id }}" @if ($setMajelis->id_jemaat_majelis == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_p_1" class="col-sm-3 col-form-label">Saksi 1</label>
+                        <label for="jabatan_majelis" class="col-sm-3 col-form-label">Jabatan Majelis</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_p_1" name="name_saksi_p_1" placeholder="Nama Saksi 1" value="{{ $nikah->name_saksi_p_1 }}">
+                            <input type="text" class="form-control" id="jabatan_majelis" name="jabatan_majelis" placeholder="Jabtan Majelis" value="{{ $setMajelis->jabatan_majelis }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_p_2" class="col-sm-3 col-form-label">Saksi 2</label>
+                        <label for="urutan" class="col-sm-3 col-form-label">Urutan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_p_2" name="name_saksi_p_2" placeholder="Nama Saksi 2" value="{{ $nikah->name_saksi_p_2 }}">
-                        </div>
-                    </div>
-                    <h5>Data Mempelia Wanita</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_wanita" class="col-sm-3 col-form-label">Calon Istri</label>
-                        <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_wanita" id="id_jemaat_wanita">
-                                <option value="" disabled selected>Pilih Calon Istri</option>
-                                @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "perempuan" && $jemaat->jabatan->jabatan != "majelis")
-                                        <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_wanita == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <input type="number" class="form-control" id="urutan" name="urutan" placeholder="Urutan" value="{{ $setMajelis->urutan }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_w_1" class="col-sm-3 col-form-label">Saksi 1</label>
+                        <label for="animasi" class="col-sm-3 col-form-label">Animasi</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_w_1" name="name_saksi_w_1" placeholder="Nama Saksi 1" value="{{ $nikah->name_saksi_w_1 }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name_saksi_w_2" class="col-sm-3 col-form-label">Saksi 2</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_w_2" name="name_saksi_w_2" placeholder="Nama Saksi 2" value="{{ $nikah->name_saksi_w_2 }}">
-                        </div>
-                    </div>
-                    <h5>Data Pendeta</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_pendeta" class="col-sm-3 col-form-label">Pendeta</label>
-                        <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_pendeta" id="id_jemaat_pendeta">
-                                <option value="" disabled selected>Pilih Pendeta</option>
-                                @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jabatan->jabatan == "majelis")
-                                        <option value="{{ $jemaat->id }}" @if ($nikah->id_jemaat_pendeta == $jemaat->id) selected @endif>{{ $jemaat->name }}</option>
-                                    @endif
-                                @endforeach
+                            <select class="form-control select2" name="animasi" id="animasi">
+                                <option value="" disabled selected>Pilih Animasi</option>
+                                <option value="fade-up" @if ($setMajelis->animasi == 'fade-up') selected @endif>fade-up</option>
+                                <option value="fade-down" @if ($setMajelis->animasi == 'fade-down') selected @endif>fade-down</option>
+                                <option value="fade-right" @if ($setMajelis->animasi == 'fade-right') selected @endif>fade-right</option>
+                                <option value="fade-left" @if ($setMajelis->animasi == 'fade-left') selected @endif>fade-left</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('nikah.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('setmajelis.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>

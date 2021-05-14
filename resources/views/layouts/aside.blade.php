@@ -101,8 +101,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>                
-                @canany('read katibadah', 'read setkeuangan')
+                </li>
                 <li class="nav-header">Setting</li>
                 @role('admin')
                 <li class="nav-item">
@@ -134,7 +133,6 @@
                     </a>
                 </li>
                 @endcan
-                @endcanany
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

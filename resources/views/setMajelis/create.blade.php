@@ -13,106 +13,64 @@
 @endsection
 
 @section('title_head')
-    Tambah Jadwal Pernikahan
+    Tambah Data Majelis
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('nikah.index') }}">Pernikahan</a></li>
-    <li class="breadcrumb-item active">Tambah Jadwal Pernikahan</li>
+    <li class="breadcrumb-item"><a href="{{ route('setmajelis.index') }}">Setting Majelis</a></li>
+    <li class="breadcrumb-item active">Tambah Data Majelis</li>
 @endsection
 
 @section('content')
-<form action="{{ route('nikah.store') }}" class="form-horizontal" method="POST">
+<form action="{{ route('setmajelis.store') }}" class="form-horizontal" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Jadwal Pernikahan</h3>
+                    <h3 class="card-title">Tambah Data Majelis</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="tgl_nikah" class="col-sm-3 col-form-label">Tanggal Pernikahan</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                                </div>
-                                <input type="text" id="tgl_nikah" name="tgl_nikah" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
-                            </div>
-                        </div>
-                    </div>
-                    <h5>Data Mempelia Pria</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_pria" class="col-sm-3 col-form-label">Calon Suami</label>
+                        <label for="id_jemaat_majelis" class="col-sm-3 col-form-label">Nama Majelis</label>
                         <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_pria" id="id_jemaat_pria">
-                                <option value="" disabled selected>Pilih Calon Suami</option>
+                            <select class="form-control select2" name="id_jemaat_majelis" id="id_jemaat_majelis">
+                                <option value="" disabled selected>Pilih Nama Majelis</option>
                                 @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "laki-laki" && $jemaat->jabatan->jabatan != "majelis")
-                                        <option value="{{ $jemaat->id }}">{{ $jemaat->name }}</option>
-                                    @endif
+                                    <option value="{{ $jemaat->id }}">{{ $jemaat->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_p_1" class="col-sm-3 col-form-label">Saksi 1</label>
+                        <label for="jabatan_majelis" class="col-sm-3 col-form-label">Jabatan Majelis</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_p_1" name="name_saksi_p_1" placeholder="Nama Saksi 1">
+                            <input type="text" class="form-control" id="jabatan_majelis" name="jabatan_majelis" placeholder="Jabtan Majelis">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_p_2" class="col-sm-3 col-form-label">Saksi 2</label>
+                        <label for="urutan" class="col-sm-3 col-form-label">Urutan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_p_2" name="name_saksi_p_2" placeholder="Nama Saksi 2">
-                        </div>
-                    </div>
-                    <h5>Data Mempelia Wanita</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_wanita" class="col-sm-3 col-form-label">Calon Istri</label>
-                        <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_wanita" id="id_jemaat_wanita">
-                                <option value="" disabled selected>Pilih Calon Istri</option>
-                                @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jk == "perempuan" && $jemaat->jabatan->jabatan != "majelis")
-                                        <option value="{{ $jemaat->id }}">{{ $jemaat->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <input type="number" class="form-control" id="urutan" name="urutan" placeholder="Urutan" value="{{ ($urut->urutan + 100)}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name_saksi_w_1" class="col-sm-3 col-form-label">Saksi 1</label>
+                        <label for="animasi" class="col-sm-3 col-form-label">Animasi</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_w_1" name="name_saksi_w_1" placeholder="Nama Saksi 1">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name_saksi_w_2" class="col-sm-3 col-form-label">Saksi 2</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="name_saksi_w_2" name="name_saksi_w_2" placeholder="Nama Saksi 2">
-                        </div>
-                    </div>
-                    <h5>Data Pendeta</h5>
-                    <div class="form-group row">
-                        <label for="id_jemaat_pendeta" class="col-sm-3 col-form-label">Pendeta</label>
-                        <div class="col-sm-5">
-                            <select class="form-control select2" name="id_jemaat_pendeta" id="id_jemaat_pendeta">
-                                <option value="" disabled selected>Pilih Pendeta</option>
-                                @foreach($jemaats as $jemaat)
-                                    @if ($jemaat->jabatan->jabatan == "majelis")
-                                        <option value="{{ $jemaat->id }}">{{ $jemaat->name }}</option>
-                                    @endif
-                                @endforeach
+                            <select class="form-control select2" name="animasi" id="animasi">
+                                <option value="" disabled selected>Pilih Animasi</option>
+                                <option value="fade-up">fade-up</option>
+                                <option value="fade-down">fade-down</option>
+                                <option value="fade-right">fade-right</option>
+                                <option value="fade-left">fade-left</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('nikah.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('setmajelis.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>
