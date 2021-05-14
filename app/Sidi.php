@@ -10,6 +10,8 @@ class Sidi extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function jemaat()
     {
         return $this->belongsTo(Jemaat::class, 'id_jemaat_sidi');

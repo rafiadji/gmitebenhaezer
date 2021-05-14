@@ -26,71 +26,91 @@
                     </a>
                 </li>
                 @endcan
-                <li class="nav-header">PENGUMUMAN & JADWAL</li>
-                @can('read baptis')
-                <li class="nav-item">
-                    <a href="{{ route('baptis.index') }}" class="nav-link @if(request()->segment(1) == 'baptis') active @endif">
-                        <i class="nav-icon fas fa-pray"></i>
-                        <p> Jadwal Pembabtisan</p>
+                <li class="nav-item has-treeview @if(request()->segment(1) == 'baptis' || request()->segment(1) == 'sidi' || request()->segment(1) == 'nikah' || request()->segment(1) == 'ibadah' || request()->segment(1) == 'pengumuman') menu-open @endif">
+                    <a href="#" class="nav-link @if(request()->segment(1) == 'baptis' || request()->segment(1) == 'sidi' || request()->segment(1) == 'nikah' || request()->segment(1) == 'ibadah' || request()->segment(1) == 'pengumuman') active @endif">
+                        <i class="nav-icon fas fa-bullhorn"></i>
+                        <p>Pengumuman & Jadwal <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        @can('read baptis')
+                        <li class="nav-item">
+                            <a href="{{ route('baptis.index') }}" class="nav-link @if(request()->segment(1) == 'baptis') active @endif">
+                                <i class="nav-icon fas fa-pray"></i>
+                                <p> Jadwal Pembabtisan</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('read sidi')
+                        <li class="nav-item">
+                            <a href="{{ route('sidi.index') }}" class="nav-link @if(request()->segment(1) == 'sidi') active @endif">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>Jadwal Sidi</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('read nikah')
+                        <li class="nav-item">
+                            <a href="{{ route('nikah.index') }}" class="nav-link @if(request()->segment(1) == 'nikah') active @endif">
+                                <i class="nav-icon fas fa-people-carry"></i>
+                                <p>Jadwal Pernikahan</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('read ibadah')
+                        <li class="nav-item">
+                            <a href="{{ route('ibadah.index') }}" class="nav-link @if(request()->segment(1) == 'ibadah') active @endif">
+                                <i class="nav-icon fas fa-bible"></i>
+                                <p>Jadwal Ibadah</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('read pengumuman')
+                        <li class="nav-item">
+                            <a href="{{ route('pengumuman.index') }}" class="nav-link @if(request()->segment(1) == 'pengumuman') active @endif">
+                                <i class="nav-icon fas fa-bell"></i>
+                                <p>Pengumuman</p>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
                 </li>
-                @endcan
-                @can('read sidi')
-                <li class="nav-item">
-                    <a href="{{ route('sidi.index') }}" class="nav-link @if(request()->segment(1) == 'sidi') active @endif">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>Jadwal Sidi</p>
+                <li class="nav-item has-treeview @if(request()->segment(1) == 'keuangan' || request()->segment(1) == 'keuangankeluar' || request()->segment(1) == 'lapkeuangan') menu-open @endif">
+                    <a href="#" class="nav-link @if(request()->segment(1) == 'keuangan' || request()->segment(1) == 'keuangankeluar' || request()->segment(1) == 'lapkeuangan') active @endif">
+                        <i class="nav-icon fas fa-money-bill-wave"></i>
+                        <p>Keuangan Gereja <i class="right fas fa-angle-left"></i></p>
                     </a>
-                </li>
-                @endcan
-                @can('read nikah')
-                <li class="nav-item">
-                    <a href="{{ route('nikah.index') }}" class="nav-link @if(request()->segment(1) == 'nikah') active @endif">
-                        <i class="nav-icon fas fa-people-carry"></i>
-                        <p>Jadwal Pernikahan</p>
-                    </a>
-                </li>
-                @endcan
-                @can('read ibadah')
-                <li class="nav-item">
-                    <a href="{{ route('ibadah.index') }}" class="nav-link @if(request()->segment(1) == 'ibadah') active @endif">
-                        <i class="nav-icon fas fa-bible"></i>
-                        <p>Jadwal Ibadah</p>
-                    </a>
-                </li>
-                @endcan
-                @can('read pengumuman')
-                <li class="nav-item">
-                    <a href="{{ route('pengumuman.index') }}" class="nav-link @if(request()->segment(1) == 'pengumuman') active @endif">
-                        <i class="nav-icon fas fa-bell"></i>
-                        <p>Pengumuman</p>
-                    </a>
-                </li>
-                @endcan
-                <li class="nav-header">Keuangan Gereja</li>
-                @can('read keuangan')
-                <li class="nav-item">
-                    <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
-                        <i class="nav-icon fas fa-file-import"></i>
-                        <p>Pemasukan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('keuangankeluar.index') }}" class="nav-link @if(request()->segment(1) == 'keuangankeluar') active @endif">
-                        <i class="nav-icon fas fa-file-export"></i>
-                        <p>Pengeluaran</p>
-                    </a>
-                </li>
-                @endcan
-                <li class="nav-item">
-                    <a href="{{ route('lapkeuangan.index') }}" class="nav-link @if(request()->segment(1) == 'lapkeuangan') active @endif">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>Laporan Keuangan</p>
-                    </a>
-                </li>
+                    <ul class="nav nav-treeview">
+                        @can('read keuangan')
+                        <li class="nav-item">
+                            <a href="{{ route('keuangan.index') }}" class="nav-link @if(request()->segment(1) == 'keuangan') active @endif">
+                                <i class="nav-icon fas fa-file-import"></i>
+                                <p>Pemasukan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('keuangankeluar.index') }}" class="nav-link @if(request()->segment(1) == 'keuangankeluar') active @endif">
+                                <i class="nav-icon fas fa-file-export"></i>
+                                <p>Pengeluaran</p>
+                            </a>
+                        </li>
+                        @endcan
+                        <li class="nav-item">
+                            <a href="{{ route('lapkeuangan.index') }}" class="nav-link @if(request()->segment(1) == 'lapkeuangan') active @endif">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>Laporan Keuangan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>                
                 @canany('read katibadah', 'read setkeuangan')
                 <li class="nav-header">Setting</li>
                 @role('admin')
+                <li class="nav-item">
+                    <a href="{{ route('setmajelis.index') }}" class="nav-link @if(request()->segment(1) == 'setmajelis') active @endif">
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>Setting Majelis</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('jabatan.index') }}" class="nav-link @if(request()->segment(1) == 'jabatan') active @endif">
                         <i class="nav-icon fas fa-child"></i>

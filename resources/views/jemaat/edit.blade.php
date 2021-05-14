@@ -41,6 +41,10 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group row">
+                                        <div class="col-sm-3"><img src="{{ asset('img/upload/'. $jemaat->foto) }}" class="img-fluid img-circle" alt=""></div>
+                                        <div class="col-sm-3"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#uploadModal">Ubah Foto</button></div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="nik" class="col-sm-3 col-form-label">NIK</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK jemaat" value="{{ $jemaat->nik }}">
@@ -228,7 +232,37 @@
             </div>
         </div>
     </div>
-    
+</form>
+<form action="{{ route('jemaat.fotoup',$jemaat->id) }}" method="POST" enctype="multipart/form-data">
+@csrf
+<div class="modal fade" id="uploadModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Unggah Foto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="file">Unggah Foto</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="file" name="file">
+                            <label class="custom-file-label" for="file">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Upload</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
 </form>
 @endsection
 
@@ -242,8 +276,11 @@
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <script>
     $(function(){
+        bsCustomFileInput.init();
         $('.datepick').datetimepicker({
             format: 'L'
         });

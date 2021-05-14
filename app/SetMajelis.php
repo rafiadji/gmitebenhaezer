@@ -10,6 +10,8 @@ class SetMajelis extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function jemmat()
     {
         return $this->belongsTo(Jemaat::class, 'id_jemaat_majelis');

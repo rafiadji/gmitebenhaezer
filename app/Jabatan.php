@@ -10,6 +10,8 @@ class Jabatan extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function jemaat()
     {
         return $this->hasMany(Jemaat::class);

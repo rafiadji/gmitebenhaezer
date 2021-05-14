@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(JemaatSeeder::class);
         $this->call(KatIbadahSeeder::class);
         $this->call(SetKeuanganSeeder::class);
+        $this->call(SetMajelisSeeder::class);
     }
 }

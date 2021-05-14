@@ -10,6 +10,8 @@ class KatIbadah extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function ibadah()
     {
         return $this->hasMany(Ibadah::class);

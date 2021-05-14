@@ -10,6 +10,8 @@ class Baptis extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function calon()
     {
         return $this->belongsTo(Jemaat::class, 'id_jemaat_baptis');

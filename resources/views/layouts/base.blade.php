@@ -20,14 +20,8 @@
             if (Auth::user()->name == "Admin") {
                 $ava = asset('img/avatar.png');
             }
-            elseif (Auth::user()->jemaat->jk == "laki-laki") {
-                $ava = asset('img/avatar5.png');
-            }
-            elseif (Auth::user()->jemaat->jk == "perempuan") {
-                $ava = asset('img/avatar2.png');
-            }
             else {
-                $ava = asset('img/AdminLTELogo.png');
+                $ava = asset('img/upload/'.Auth::user()->jemaat->foto);
             }
         ?>
         <ul class="navbar-nav ml-auto">

@@ -10,6 +10,8 @@ class Pengumuman extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');

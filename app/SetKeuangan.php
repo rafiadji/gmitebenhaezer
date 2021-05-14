@@ -10,6 +10,8 @@ class SetKeuangan extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function keuangan()
     {
         return $this->hasMany(Keuangan::class);

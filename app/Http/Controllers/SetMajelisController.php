@@ -8,13 +8,24 @@ use Illuminate\Http\Request;
 class SetMajelisController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $setmajelis = SetMajelis::orderBy('id', 'asc')->get();
+        return view('setmajelis.list', compact('setmajelis'));
     }
 
     /**

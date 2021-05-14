@@ -61,6 +61,7 @@ Route::group(['prefix'=>'jemaat','as'=>'jemaat.'], function(){
     Route::get('/create', ['as' => 'create', 'uses' => 'JemaatController@create'])->middleware('permission:create jemaat');
     Route::get('/{jemaat}', ['as' => 'show', 'uses' => 'JemaatController@show'])->middleware('permission:read jemaat');
     Route::put('/{jemaat}', ['as' => 'update', 'uses' => 'JemaatController@update'])->middleware('permission:update jemaat');
+    Route::post('/{jemaat}', ['as' => 'fotoup', 'uses' => 'JemaatController@uploadFoto']);
     Route::delete('/{jemaat}', ['as' => 'destroy', 'uses' => 'JemaatController@destroy'])->middleware('permission:delete jemaat');
     Route::get('/{jemaat}/edit', ['as' => 'edit', 'uses' => 'JemaatController@edit'])->middleware('permission:update jemaat');
 });

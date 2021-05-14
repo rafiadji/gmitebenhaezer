@@ -71,6 +71,13 @@ class JemaatController extends Controller
         $id_user = $newUser->id;
         $request->merge(["id_user" => $id_user]);
 
+        if ($request->input('jk') == "laki-laki") {
+            $request->merge(["foto" => "avatarl.png"]);
+        }
+        else{
+            $request->merge(["foto" => "avatarp.png"]);
+        }
+
         Jemaat::create($request->except(['email']));
 
         return redirect()->route('jemaat.index')
@@ -146,5 +153,23 @@ class JemaatController extends Controller
   
         return redirect()->route('jemaat.index')
                         ->with('success','Jemaat berhasil dihapus');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Jemaat  $jemaat
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadFoto(Request $request, Jemaat $jemaat)
+    {
+        if($request->file('file')){
+			$file = $request->file('file');
+			$namefile = "profile-".$jemaat->id.".".$file->getClientOriginalExtension();
+			$request->merge(["foto" => $namefile]);
+			$file->move("img/upload", $namefile);
+            $jemaat->update($request->except(['file']));
+		}
+        return redirect()->route('jemaat.edit',$jemaat->id);
     }
 }
