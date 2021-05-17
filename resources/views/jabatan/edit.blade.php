@@ -229,6 +229,49 @@
                             </div>&nbsp;
                         </div>
                     </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Setting Majelis</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'read setmajelis')) checked="checked" @endif value="read setmajelis" id="readsetmajelis">
+                                <label for="readsetmajelis">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'create setmajelis')) checked="checked" @endif value="create setmajelis" id="createsetmajelis">
+                                <label for="createsetmajelis">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'update setmajelis')) checked="checked" @endif value="update setmajelis" id="updatesetmajelis">
+                                <label for="updatesetmajelis">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'delete setmajelis')) checked="checked" @endif value="delete setmajelis" id="deletesetmajelis">
+                                <label for="deletesetmajelis">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Menu Setting Kegiatan</label>
+                        <div class="col-sm-5">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'read setkegiatan')) checked="checked" @endif value="read setkegiatan" id="readsetkegiatan">
+                                <label for="readsetkegiatan">Read</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'create setkegiatan')) checked="checked" @endif value="create setkegiatan" id="createsetkegiatan">
+                                <label for="createsetkegiatan">Create</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'update setkegiatan')) checked="checked" @endif value="update setkegiatan" id="updatesetkegiatan">
+                                <label for="updatesetkegiatan">Update</label>
+                            </div>&nbsp;
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" name="permission[]" @if($exists = Arr::exists($roles, 'delete setkegiatan')) checked="checked" @endif value="delete setkegiatan" id="deletesetkegiatan">
+                                <label for="deletesetkegiatan">Delete</label>
+                            </div>&nbsp;
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>

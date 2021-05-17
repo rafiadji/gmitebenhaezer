@@ -78,6 +78,18 @@ class RoleSeeder extends Seeder
         $update_setkeuangan = Permission::create(['name' => 'update setkeuangan']);
         $delete_setkeuangan = Permission::create(['name' => 'delete setkeuangan']);
 
+        // setmajelis
+        $create_setmajelis = Permission::create(['name' => 'create setmajelis']);
+        $read_setmajelis = Permission::create(['name' => 'read setmajelis']);
+        $update_setmajelis = Permission::create(['name' => 'update setmajelis']);
+        $delete_setmajelis = Permission::create(['name' => 'delete setmajelis']);
+
+        // setkegiatan
+        $create_setkegiatan = Permission::create(['name' => 'create setkegiatan']);
+        $read_setkegiatan = Permission::create(['name' => 'read setkegiatan']);
+        $update_setkegiatan = Permission::create(['name' => 'update setkegiatan']);
+        $delete_setkegiatan = Permission::create(['name' => 'delete setkegiatan']);
+
         $admin_user = User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
@@ -99,6 +111,8 @@ class RoleSeeder extends Seeder
         $admin->givePermissionTo($create_katibadah, $read_katibadah, $update_katibadah, $delete_katibadah);
         $admin->givePermissionTo($create_keuangan, $read_keuangan, $update_keuangan, $delete_keuangan);
         $admin->givePermissionTo($create_setkeuangan, $read_setkeuangan, $update_setkeuangan, $delete_setkeuangan);
+        $admin->givePermissionTo($create_setmajelis, $read_setmajelis, $update_setmajelis, $delete_setmajelis);
+        $admin->givePermissionTo($create_setkegiatan, $read_setkegiatan, $update_setkegiatan, $delete_setkegiatan);
 
         $majelis->givePermissionTo($create_jemaat, $read_jemaat, $update_jemaat, $delete_jemaat);
         $majelis->givePermissionTo($create_sidi, $read_sidi, $update_sidi, $delete_sidi);
@@ -109,6 +123,8 @@ class RoleSeeder extends Seeder
         $majelis->givePermissionTo($create_katibadah, $read_katibadah, $update_katibadah, $delete_katibadah);
         $majelis->givePermissionTo($create_keuangan, $read_keuangan, $update_keuangan, $delete_keuangan);
         $majelis->givePermissionTo($create_setkeuangan, $read_setkeuangan, $update_setkeuangan, $delete_setkeuangan);
+        $majelis->givePermissionTo($create_setmajelis, $read_setmajelis, $update_setmajelis, $delete_setmajelis);
+        $majelis->givePermissionTo($create_setkegiatan, $read_setkegiatan, $update_setkegiatan, $delete_setkegiatan);
 
         $staff->givePermissionTo($create_jemaat, $read_jemaat, $update_jemaat);
         $staff->givePermissionTo($create_sidi, $read_sidi, $update_sidi);

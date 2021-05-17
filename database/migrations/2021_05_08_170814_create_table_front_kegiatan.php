@@ -17,6 +17,7 @@ class CreateTableFrontKegiatan extends Migration
             $table->id();
             $table->text('foto_kegiatan');
             $table->string('nama_kegiatan', 50);
+            $table->text('ket_kegiatan');
             $table->timestamps();
         });
     }

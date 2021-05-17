@@ -149,11 +149,22 @@ Route::group(['prefix'=>'lapkeuangan','as'=>'lapkeuangan.'], function(){
 });
 
 Route::group(['prefix'=>'setmajelis','as'=>'setmajelis.'], function(){
-    Route::get('', ['as' => 'index', 'uses' => 'SetMajelisController@index']);
-    Route::post('', ['as' => 'store', 'uses' => 'SetMajelisController@store']);
-    Route::get('/create', ['as' => 'create', 'uses' => 'SetMajelisController@create']);
-    Route::get('/{setMajelis}', ['as' => 'show', 'uses' => 'SetMajelisController@show']);
-    Route::put('/{setMajelis}', ['as' => 'update', 'uses' => 'SetMajelisController@update']);
-    Route::delete('/{setMajelis}', ['as' => 'destroy', 'uses' => 'SetMajelisController@destroy']);
-    Route::get('/{setMajelis}/edit', ['as' => 'edit', 'uses' => 'SetMajelisController@edit']);
+    Route::get('', ['as' => 'index', 'uses' => 'SetMajelisController@index'])->middleware('permission:read setmajelis');
+    Route::post('', ['as' => 'store', 'uses' => 'SetMajelisController@store'])->middleware('permission:create setmajelis');
+    Route::get('/create', ['as' => 'create', 'uses' => 'SetMajelisController@create'])->middleware('permission:create setmajelis');
+    Route::get('/{setMajelis}', ['as' => 'show', 'uses' => 'SetMajelisController@show'])->middleware('permission:read setmajelis');
+    Route::put('/{setMajelis}', ['as' => 'update', 'uses' => 'SetMajelisController@update'])->middleware('permission:update setmajelis');
+    Route::delete('/{setMajelis}', ['as' => 'destroy', 'uses' => 'SetMajelisController@destroy'])->middleware('permission:delete setmajelis');
+    Route::get('/{setMajelis}/edit', ['as' => 'edit', 'uses' => 'SetMajelisController@edit'])->middleware('permission:update setmajelis');
+});
+
+Route::group(['prefix'=>'setkegiatan','as'=>'setkegiatan.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'SetKegiatanController@index'])->middleware('permission:read setkegiatan');
+    Route::post('', ['as' => 'store', 'uses' => 'SetKegiatanController@store'])->middleware('permission:create setkegiatan');
+    Route::get('/create', ['as' => 'create', 'uses' => 'SetKegiatanController@create'])->middleware('permission:create setkegiatan');
+    Route::get('/{setKegiatan}', ['as' => 'show', 'uses' => 'SetKegiatanController@show'])->middleware('permission:read setkegiatan');
+    Route::put('/{setKegiatan}', ['as' => 'update', 'uses' => 'SetKegiatanController@update'])->middleware('permission:update setkegiatan');
+    Route::post('/{setKegiatan}', ['as' => 'fotoup', 'uses' => 'SetKegiatanController@uploadFoto']);
+    Route::delete('/{setKegiatan}', ['as' => 'destroy', 'uses' => 'SetKegiatanController@destroy'])->middleware('permission:delete setkegiatan');
+    Route::get('/{setKegiatan}/edit', ['as' => 'edit', 'uses' => 'SetKegiatanController@edit'])->middleware('permission:update setkegiatan');
 });

@@ -146,7 +146,7 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <a href="{{ asset('img/kegiatan/k1.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 1">
+                            <a href="{{ asset('img/kegiatan/k1.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan mana">
                                 <img src="{{ asset('img/kegiatan/k1.jpeg') }}" class="img-fluid" alt="">
                             </a>
                         </figure>

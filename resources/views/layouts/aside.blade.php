@@ -105,6 +105,12 @@
                 <li class="nav-header">Setting</li>
                 @role('admin')
                 <li class="nav-item">
+                    <a href="{{ route('setkegiatan.index') }}" class="nav-link @if(request()->segment(1) == 'setkegiatan') active @endif">
+                        <i class="nav-icon fas fa-walking"></i>
+                        <p>Setting Kegiatan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('setmajelis.index') }}" class="nav-link @if(request()->segment(1) == 'setmajelis') active @endif">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>Setting Majelis</p>
