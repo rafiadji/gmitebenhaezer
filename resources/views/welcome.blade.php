@@ -143,84 +143,21 @@
                 </div> --}}
             </div>
             <div class="row galeri-container" data-aos="fade-up" data-aos-delay="200">
+                @foreach ($kegiatans as $kegiatan)
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <a href="{{ asset('img/kegiatan/k1.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan mana">
-                                <img src="{{ asset('img/kegiatan/k1.jpeg') }}" class="img-fluid" alt="">
+                            <a href="{{ asset('img/kegiatan/'. $kegiatan->foto_kegiatan) }}" class="venobox" data-gall="portfolioGallery" title="{!! $kegiatan->ket_kegiatan !!}">
+                                <img src="{{ asset('img/kegiatan/'. $kegiatan->foto_kegiatan) }}" class="img-fluid" alt="">
                             </a>
                         </figure>
 
                         <div class="galeri-info">
-                            <h4>Kegiatan 1</h4>
+                            <h4>{{ $kegiatan->nama_kegiatan}}</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 galeri-item filter-app">
-                    <div class="galeri-wrap">
-                        <figure>
-                            <a href="{{ asset('img/kegiatan/k2.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 2">
-                                <img src="{{ asset('img/kegiatan/k2.jpeg') }}" class="img-fluid" alt="">
-                            </a>
-                        </figure>
-
-                        <div class="galeri-info">
-                            <h4>Kegiatan 2</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 galeri-item filter-app">
-                    <div class="galeri-wrap">
-                        <figure>
-                            <a href="{{ asset('img/kegiatan/k3.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 3">
-                                <img src="{{ asset('img/kegiatan/k3.jpeg') }}" class="img-fluid" alt="">
-                            </a>
-                        </figure>
-
-                        <div class="galeri-info">
-                            <h4>Kegiatan 3</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 galeri-item filter-app">
-                    <div class="galeri-wrap">
-                        <figure>
-                            <a href="{{ asset('img/kegiatan/k4.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 4">
-                                <img src="{{ asset('img/kegiatan/k4.jpeg') }}" class="img-fluid" alt="">
-                            </a>
-                        </figure>
-
-                        <div class="galeri-info">
-                            <h4>Kegiatan 4</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 galeri-item filter-app">
-                    <div class="galeri-wrap">
-                        <figure>
-                            <a href="{{ asset('img/kegiatan/k5.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 5">
-                                <img src="{{ asset('img/kegiatan/k5.jpeg') }}" class="img-fluid" alt="">
-                            </a>
-                        </figure>
-
-                        <div class="galeri-info">
-                            <h4>Kegiatan 5</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 galeri-item filter-app">
-                    <div class="galeri-wrap">
-                        <figure>
-                            <a href="{{ asset('img/kegiatan/k6.jpeg') }}" class="venobox" data-gall="portfolioGallery" title="Kegiatan 6">
-                                <img src="{{ asset('img/kegiatan/k6.jpeg') }}" class="img-fluid" alt="">
-                            </a>
-                        </figure>
-
-                        <div class="galeri-info">
-                            <h4>Kegiatan 6</h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
