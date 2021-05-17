@@ -103,19 +103,23 @@
                     </ul>
                 </li>
                 <li class="nav-header">Setting</li>
-                @role('admin')
+                @can('read setkegiatan')
                 <li class="nav-item">
                     <a href="{{ route('setkegiatan.index') }}" class="nav-link @if(request()->segment(1) == 'setkegiatan') active @endif">
                         <i class="nav-icon fas fa-walking"></i>
                         <p>Setting Kegiatan</p>
                     </a>
                 </li>
+                @endcan
+                @can('read setmajelis')
                 <li class="nav-item">
                     <a href="{{ route('setmajelis.index') }}" class="nav-link @if(request()->segment(1) == 'setmajelis') active @endif">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>Setting Majelis</p>
                     </a>
                 </li>
+                @endcan
+                @role('admin')
                 <li class="nav-item">
                     <a href="{{ route('jabatan.index') }}" class="nav-link @if(request()->segment(1) == 'jabatan') active @endif">
                         <i class="nav-icon fas fa-child"></i>
@@ -139,6 +143,12 @@
                     </a>
                 </li>
                 @endcan
+                <li class="nav-item">
+                    <a href="{{ route('changeprofile.edit') }}" class="nav-link @if(request()->segment(1) == 'changeprofile') active @endif">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>Ubah Profile</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

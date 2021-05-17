@@ -20,6 +20,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'changeprofile', 'as' => 'changeprofile.'], function () {
+    Route::put('', ['as' => 'update', 'uses' => 'HomeController@updatepropfile']);
+    Route::get('/edit', ['as' => 'edit', 'uses' => 'HomeController@editprofile']);
+    Route::post('', ['as' => 'fotoup', 'uses' => 'HomeController@uploadFoto']);
+});
+
 Route::group(['prefix' => 'changepassword', 'as' => 'changepassword.'], function () {
     Route::post('', ['as' => 'update', 'uses' => 'HomeController@updatepassword']);
     Route::get('/edit', ['as' => 'edit', 'uses' => 'HomeController@editpassword']);

@@ -9,6 +9,7 @@ use App\Baptis;
 use App\Sidi;
 use App\Nikah;
 use App\Keuangan;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,62 @@ class HomeController extends Controller
             'datachart' => $chart,
             'year' => $year,
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editprofile()
+    {
+        return view('auth.changeprofile');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatepropfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'jk' => 'required',
+        ]);
+
+        $tlp = preg_replace("/[^0-9.]/", "", $request->input("no_tlp"));
+        $request->merge(["no_tlp" => $tlp]);
+
+        $user = User::where('id', Auth::user()->jemaat['id_user'])->first();
+        $user->name = $request->input("name");
+        $user->email = $request->input("email");
+        $user->save();
+  
+        Auth::user()->jemaat->update($request->except(['email']));
+
+        return redirect()->route('changeprofile.edit')
+                        ->with('success','Profile berhasil diubah.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Jemaat  $jemaat
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadFoto(Request $request)
+    {
+        if($request->file('file')){
+			$file = $request->file('file');
+			$namefile = "profile-".Auth::user()->jemaat->id.".".$file->getClientOriginalExtension();
+			$request->merge(["foto" => $namefile]);
+			$file->move("img/upload", $namefile);
+            Auth::user()->jemaat->update($request->except(['file']));
+		}
+        return redirect()->route('changeprofile.edit');
     }
 
     /**
