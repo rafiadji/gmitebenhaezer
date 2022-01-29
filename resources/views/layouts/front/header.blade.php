@@ -10,9 +10,11 @@
                 <nav class="nav-menu d-none d-lg-block">
                     <ul>
                         <li><a href="#ibadah">Pengumuman & <br> Ibadah</a></li>
+                        <li><a href="#renungan">Renungan</a></li>
                         <li><a href="#tentang">Tentang<br>Kami</a></li>
                         <li><a href="#majelis">Majelis<br>Kami</a></li>
                         <li><a href="#galeri">Kegiatan</a></li>
+                        <li><a href="#sejarah">Sejarah</a></li>
                         <li><a href="#contact">Hubungi<br>Kami</a></li>
                         @if (Route::has('login'))
                             @auth

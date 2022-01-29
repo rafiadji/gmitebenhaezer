@@ -15,52 +15,58 @@
 @endsection
 
 @section('title_head')
-    Tambah Data Kegiatan
+    Tambah Data Sejarah Ketua
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('setkegiatan.index') }}">Setting Kegiatan</a></li>
-    <li class="breadcrumb-item active">Tambah Data Kegiatan</li>
+    <li class="breadcrumb-item"><a href="{{ route('setsejarah.index') }}">Setting Sejarah</a></li>
+    <li class="breadcrumb-item active">Tambah Data Sejarah Ketua</li>
 @endsection
 
 @section('content')
-<form action="{{ route('setkegiatan.store') }}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+<form action="{{ route('setsejarah.store') }}" class="form-horizontal" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Data Kegiatan</h3>
+                    <h3 class="card-title">Tambah Data Sejarah Ketua</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="nama_kegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
+                        <label for="nama" class="col-sm-3 col-form-label">Nama Ketua</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" placeholder="Nama Kegiatan">
+                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Ketua">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="file" class="col-sm-3 col-form-label">Foto Kegiatan</label>
+                        <label for="tahun_awal" class="col-sm-3 col-form-label">Tahun Awal</label>
                         <div class="col-sm-5">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="file" name="file">
-                                    <label class="custom-file-label" for="file">Choose file</label>
-                                </div>
-                            </div>
+                            <select class="form-control select2" name="tahun_awal" id="tahun_awal">
+                                <option value="" disabled selected>Pilih Tahun Awal</option>
+                                @for ($i = 1930; $i <= 3000; $i++)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ket_kegiatan" class="col-sm-3 col-form-label">Keterangan Kegiatan</label>
-                        <div class="col-sm-8">
-                            <textarea class="ketkegiatan" id="ket_kegiatan" name="ket_kegiatan"></textarea>
+                        <label for="tahun_akhir" class="col-sm-3 col-form-label">Tahun Akhir</label>
+                        <div class="col-sm-5">
+                            <select class="form-control select2" name="tahun_akhir" id="tahun_akhir">
+                                <option value="" disabled selected>Pilih Tahun Awal</option>
+                                <option value="">Sampai Sekarang</option>
+                                @for ($i = 1930; $i <= 3000; $i++)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('setkegiatan.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('setsejarah.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>
@@ -93,23 +99,6 @@
         $('.select2').select2({
             theme: 'bootstrap4'
         });
-        // Summernote
-        $('.ketkegiatan').summernote({
-            placeholder: 'Keterangan Kegiatan',
-            height:200,
-            tabDisable: true,
-            disableDragAndDrop: true,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontname', ['fontname']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph', 'height']],
-                ['table', ['table']],
-                ['insert', ['link']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-        })
     });
 </script>
 @endsection

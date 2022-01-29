@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-<form action="{{ route('setkegiatan.update', $setKegiatan->id) }}" class="form-horizontal" method="POST">
+<form action="{{ route('setkegiatan.update', $setKegiatan->id) }}" class="form-horizontal" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">

@@ -174,3 +174,23 @@ Route::group(['prefix'=>'setkegiatan','as'=>'setkegiatan.'], function(){
     Route::delete('/{setKegiatan}', ['as' => 'destroy', 'uses' => 'SetKegiatanController@destroy'])->middleware('permission:delete setkegiatan');
     Route::get('/{setKegiatan}/edit', ['as' => 'edit', 'uses' => 'SetKegiatanController@edit'])->middleware('permission:update setkegiatan');
 });
+
+Route::group(['prefix'=>'setrenungan','as'=>'setrenungan.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'RenunganController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'RenunganController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'RenunganController@create']);
+    Route::get('/{renungan}', ['as' => 'show', 'uses' => 'RenunganController@show']);
+    Route::put('/{renungan}', ['as' => 'update', 'uses' => 'RenunganController@update']);
+    Route::delete('/{renungan}', ['as' => 'destroy', 'uses' => 'RenunganController@destroy']);
+    Route::get('/{renungan}/edit', ['as' => 'edit', 'uses' => 'RenunganController@edit']);
+});
+
+Route::group(['prefix'=>'setsejarah','as'=>'setsejarah.'], function(){
+    Route::get('', ['as' => 'index', 'uses' => 'SetSejarahController@index']);
+    Route::post('', ['as' => 'store', 'uses' => 'SetSejarahController@store']);
+    Route::get('/create', ['as' => 'create', 'uses' => 'SetSejarahController@create']);
+    Route::get('/{setSejarah}', ['as' => 'show', 'uses' => 'SetSejarahController@show']);
+    Route::put('/{setSejarah}', ['as' => 'update', 'uses' => 'SetSejarahController@update']);
+    Route::delete('/{setSejarah}', ['as' => 'destroy', 'uses' => 'SetSejarahController@destroy']);
+    Route::get('/{setSejarah}/edit', ['as' => 'edit', 'uses' => 'SetSejarahController@edit']);
+});

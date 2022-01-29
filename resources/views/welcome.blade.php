@@ -43,6 +43,16 @@
             </div>
         </div>
     </section>
+    <section id="renungan">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                @if (!empty($renungans->renungan))
+                <h3>Renungan</h3>
+                <p>{{ strip_tags($renungans->judul) }} <br> {{ strip_tags($renungans->renungan) }}</p>
+                @endif
+            </div>
+        </div>
+    </section>
     <section id="tentang">
         <div class="container" data-aos="fade-right">
             <header class="section-header">
@@ -147,7 +157,7 @@
                 <div class="col-lg-4 col-md-6 galeri-item filter-app">
                     <div class="galeri-wrap">
                         <figure>
-                            <a href="{{ asset('img/kegiatan/'. $kegiatan->foto_kegiatan) }}" class="venobox" data-gall="portfolioGallery" title="{!! $kegiatan->ket_kegiatan !!}">
+                            <a href="{{ asset('img/kegiatan/'. $kegiatan->foto_kegiatan) }}" class="venobox" data-gall="portfolioGallery" title="{{ strip_tags($kegiatan->ket_kegiatan) }}">
                                 <img src="{{ asset('img/kegiatan/'. $kegiatan->foto_kegiatan) }}" class="img-fluid" alt="">
                             </a>
                         </figure>
@@ -158,6 +168,100 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+    <section id="sejarah">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h3>Sejarah Gereja</h3>
+                <p style="text-align: justify">
+                    Gereja ada dan berdiri atas dasar Kuasa Roh Kudus, sehingga banyak orang yang telah percaya dan mengenal Yesus Kristus sebagai Juru Selamat dan Kepala Gereja.
+                    <br><br>
+                    Melalui Amanat/pesan Yesus ( Mat 28 : 19 – 20 ), maka Amanat itu terus disampaikan kepada manusia dan Dunia yang menerusi segala Zaman dimulai dari jemaat mula-mula (dari Jurusalem hingga kini) yang telah menerima kabar sukacita (Evanggelion) tentang Yesus Kristus sebagai Juru Selamat.
+                    <br><br>
+                    Sejarah berdirinya Gereja yang berawal dari masa kolonial Belanda dengan sistem pemerintahannya, dengan sendirinya orang-orang Belanda yang beagama Protestan di tambah lagi dengan orang pribumi dan dari luar Larantuka maka terbentuklah kelompok warga Jemaat pada masa itu.
+                    <br><br>
+                    Patut diketahui bahwa Gereja katholik telah mendahuluinya sejak orang portugis bersama pada Misionaris dengan tugas pelayanan missinya ,  namun dengan pergumulan Warga Jemaat yang ada pada saat itu, pelayanan rohani bagi para Tentara Belanda dan pegawai tetap dilakukan dengan mempergunakan rumah tinggal dan asrama sebagai tempat Ibadah oleh penginjil orang Belanda/Misionaris.
+                    <br><br>
+                    Atas dasar pergumulan maka sekelompok Warga Jemaat mulai merencanakan untuk membangun sebuah rumah Ibadah yang tetap untuk bersekutu dan ber-Ibadah kepada TUHAN. Melalui niat yang baik ini, maka rencana dapat terlaksana dengan proses pembangunan (Rumah Ibadah) berukuran 7 x 20 meter pada awal tahun 1937 dan pada 1 Januari 1938 diresmikan dan ditahbiskan sebagai tempat Ibadah resmi.
+                    <br><br>
+                    Sebagai suatu peringatan berdirinya Gedung Gereja Protestan di Larantuka, telah dipasang prasasti didalam Gedung yang bertulisakan nama-nama pendiri gereja sebagai berikut :
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="text-align: center">PEROESAH (1 - 1 - 1938)</th>
+                            </tr>
+                            <tr class="hidden">
+                                <th style="width: 10%">No</th>
+                                <th style="width: 90%">Nama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>D.M. WATTIMENA</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>R. FRANCIS</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>E. PATTIJ</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>F. FOE</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>W. SALAKA</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>R. DJAWA</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>R.N. SUMAMPAUW</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>J.F. RUHUPESSIJ</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>A. TAPILATU</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    Para pendiri adalah Warga Jemaat pertama yang diberi nama JEMAAT EBENHAEZER (1 sem, 7 : 12 b).
+                    <br><br>
+                    Para pelayan yang melayani Jemaat Ebenhaezer mulai sejak berdiri hingga saat ini :
+                    <?php $no = 1; ?>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">No</th>
+                                <th style="width: 45%">Nama Ketua</th>
+                                <th style="width: 45%">Masa Jabatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($sejarahs as $sejarah)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $sejarah->nama }}</td>
+                                    <td>{{ $sejarah->tahun_awal }} - @if ($sejarah->tahun_akhir != ""){{ $sejarah->tahun_akhir }}@else Sampai Sekarang @endif</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <br>
+                    Dengan perkembangan jemaat yang begitu pesat hingga saat ini, maka gedung Gereja yang dibangun pada tahun 1937 tidak dapat lagi menampung kegiatan pelayanan warga jemaat secara keseluruhan, maka dengan keadaan ini warga jemaat terus memikirkan dan berupaya untuk mencari Dana dan lokasi baru.
+                </p>
             </div>
         </div>
     </section>

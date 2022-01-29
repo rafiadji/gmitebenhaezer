@@ -103,6 +103,14 @@
                     </ul>
                 </li>
                 <li class="nav-header">Setting</li>
+                @role('admin')
+                <li class="nav-item">
+                    <a href="{{ route('setrenungan.index') }}" class="nav-link @if(request()->segment(1) == 'setrenungan') active @endif">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>Setting Renungan</p>
+                    </a>
+                </li>
+                @endrole
                 @can('read setkegiatan')
                 <li class="nav-item">
                     <a href="{{ route('setkegiatan.index') }}" class="nav-link @if(request()->segment(1) == 'setkegiatan') active @endif">
@@ -119,6 +127,14 @@
                     </a>
                 </li>
                 @endcan
+                @role('admin')
+                <li class="nav-item">
+                    <a href="{{ route('setsejarah.index') }}" class="nav-link @if(request()->segment(1) == 'setsejarah') active @endif">
+                        <i class="nav-icon fas fa-walking"></i>
+                        <p>Setting Sejarah</p>
+                    </a>
+                </li>
+                @endrole
                 @role('admin')
                 <li class="nav-item">
                     <a href="{{ route('jabatan.index') }}" class="nav-link @if(request()->segment(1) == 'jabatan') active @endif">

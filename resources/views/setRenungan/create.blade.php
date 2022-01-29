@@ -15,52 +15,41 @@
 @endsection
 
 @section('title_head')
-    Tambah Data Kegiatan
+    Tambah Data Renungan
 @endsection
 
 @section('bread')
     <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('setkegiatan.index') }}">Setting Kegiatan</a></li>
-    <li class="breadcrumb-item active">Tambah Data Kegiatan</li>
+    <li class="breadcrumb-item"><a href="{{ route('setrenungan.index') }}">Setting Renungan</a></li>
+    <li class="breadcrumb-item active">Tambah Data Renungan</li>
 @endsection
 
 @section('content')
-<form action="{{ route('setkegiatan.store') }}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+<form action="{{ route('setrenungan.store') }}" class="form-horizontal" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah Data Kegiatan</h3>
+                    <h3 class="card-title">Tambah Data Renungan</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="nama_kegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" placeholder="Nama Kegiatan">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="file" class="col-sm-3 col-form-label">Foto Kegiatan</label>
-                        <div class="col-sm-5">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="file" name="file">
-                                    <label class="custom-file-label" for="file">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="ket_kegiatan" class="col-sm-3 col-form-label">Keterangan Kegiatan</label>
+                        <label for="judul" class="col-sm-3 col-form-label">Judul</label>
                         <div class="col-sm-8">
-                            <textarea class="ketkegiatan" id="ket_kegiatan" name="ket_kegiatan"></textarea>
+                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Renungan">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="renungan" class="col-sm-3 col-form-label">Renungan</label>
+                        <div class="col-sm-8">
+                            <textarea class="umum" id="renungan" name="renungan"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('setkegiatan.index') }}" class="btn btn-default float-right">Batal</a>
+                    <a href="{{ route('setrenungan.index') }}" class="btn btn-default float-right">Batal</a>
                 </div>
             </div>
         </div>
@@ -79,13 +68,10 @@
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <!-- Summernote -->
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script>
     $(function(){
-        bsCustomFileInput.init();
         $('.datepick').datetimepicker({
             format: 'L'
         });
@@ -93,9 +79,8 @@
         $('.select2').select2({
             theme: 'bootstrap4'
         });
-        // Summernote
-        $('.ketkegiatan').summernote({
-            placeholder: 'Keterangan Kegiatan',
+        $('.umum').summernote({
+            placeholder: 'Isi Pengumuman',
             height:200,
             tabDisable: true,
             disableDragAndDrop: true,
